@@ -16,7 +16,8 @@
       "cards",
       "columns",
       "fragment",
-      "quote"
+      "quote",
+      "featured-news-articles"
     ]
   },
   {
@@ -39,5 +40,11 @@
       "button",
       "title"
     ]
-  }
+  },
+   {
+      "id": "featured-news-articles",
+      "components": [
+        "featured-news-article"
+      ]
+    }
 ]
