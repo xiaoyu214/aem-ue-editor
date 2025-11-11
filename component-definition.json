@@ -174,7 +174,7 @@
             }
           }
         },
-         {
+        {
           "title": "Featured News & Articles",
           "id": "featured-news-articles",
           "plugins": {
