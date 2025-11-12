@@ -271,7 +271,7 @@
           "valueType": "string",
           "name": "seeAllButtonText",
           "label": "See All Articles Button Text",
-          "value": "See all News & Articles"
+          "value": "See all News Articles"
         },
         {
           "component": "aem-content",

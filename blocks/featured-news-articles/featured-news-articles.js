@@ -12,7 +12,7 @@ export default function decorate(block) {
   const $seeAllText = divs[1]?.querySelector("div").querySelector("p");
   const seeAllText = $seeAllText
     ? $seeAllText.textContent?.trim()
-    : "See all News & Articles";
+    : "See all News Articles";
 
   // 提取文章项数据（从第5个div开始是文章项）
   const articles = [];
