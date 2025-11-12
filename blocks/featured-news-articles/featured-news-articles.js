@@ -26,7 +26,7 @@ export default function decorate(block) {
       });
     }
   }
-  return false;
+  
   // 创建外层section
   const section = document.createElement("section");
   section.className = "section-with-bottom-spacing";
@@ -111,7 +111,7 @@ export default function decorate(block) {
         <div class="cmp-article-card__desc">${article.summary}</div>
       </div>
     `;
-
+    return false;
     carouselItem.appendChild(articleCard);
     carouselContent.appendChild(carouselItem);
 
