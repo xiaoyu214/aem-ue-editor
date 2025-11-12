@@ -2,6 +2,7 @@ import { createOptimizedPicture } from "../../scripts/aem.js";
 import { moveInstrumentation } from "../../scripts/scripts.js";
 
 export default function decorate(block) {
+  return false;
   // 获取block中的所有div元素
   const divs = block.querySelectorAll(":scope > div");
 
