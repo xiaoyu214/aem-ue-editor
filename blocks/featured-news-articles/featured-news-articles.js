@@ -135,15 +135,15 @@ export default function decorate(block) {
   // seeAllLink.insertBefore(seeAllLinkText,seeAllLink.firstChild);
   sectionActions.appendChild(seeAllLink);
   section.appendChild(sectionActions);
-return false;
+
   if($seeAllText){
     moveInstrumentation($seeAllText, seeAllLinkText);
   }
-  
+
 
   // 清空block并添加新内容
   block.innerHTML = "";
-  block.appendChild(section);
+  block.append(section);
 
   // 迁移整个block的AEM属性到section
   // moveInstrumentation(block, section);
