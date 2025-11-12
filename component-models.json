@@ -256,7 +256,7 @@
       }
     ]
   },
-  {
+   {
     "id": "featured-news-articles",
     "fields": [
       {
@@ -264,7 +264,7 @@
           "valueType": "string",
           "name": "title",
           "label": "Title",
-          "value": "Featured News & Articles"
+          "value": "Featured News Articles"
         },
         {
           "component": "text",
@@ -284,14 +284,6 @@
           "valueType": "boolean",
           "name": "openLinkInNewTab",
           "label": "Open link in new tab"
-        },
-        {
-          "component": "text",
-          "valueType": "number",
-          "name": "maxItems",
-          "label": "Maximum Items",
-          "defaultValue": 7,
-          "description": "Set the maximum number of articles to display (Max: 7)"
         }
     ]
   },
