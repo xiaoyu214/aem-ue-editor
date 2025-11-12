@@ -2,6 +2,7 @@ import { createOptimizedPicture } from "../../scripts/aem.js";
 import { moveInstrumentation } from "../../scripts/scripts.js";
 
 export default function decorate(block) {
+  debugger
   // 获取block中的所有div元素
   const divs = block.querySelectorAll(":scope > div");
 
@@ -31,41 +32,41 @@ export default function decorate(block) {
   const section = document.createElement("section");
   section.className = "section-with-bottom-spacing";
 
-  // 创建容器
-  const container = document.createElement("div");
-  container.className = "cmp-container container";
-  section.appendChild(container);
+  // // 创建容器
+  // const container = document.createElement("div");
+  // container.className = "cmp-container container";
+  // section.appendChild(container);
 
-  // 创建carousel容器
-  const carouselContainer = document.createElement("div");
-  carouselContainer.className = "carousel panelcontainer";
-  container.appendChild(carouselContainer);
+  // // 创建carousel容器
+  // const carouselContainer = document.createElement("div");
+  // carouselContainer.className = "carousel panelcontainer";
+  // container.appendChild(carouselContainer);
 
-  // 创建section heading
-  const sectionHeading = document.createElement("div");
-  sectionHeading.className = "section-heading";
-  sectionHeading.innerHTML = `
-    <div class="section-heading__text-group">
-      <h2 class="section-heading__title">${title}</h2>
-    </div>
-    <div class="section-heading__action-buttons cmp-carousel__actions">
-      <button class="cmp-carousel__action cmp-carousel__action--previous">
-        <span class="sr-only">Previous Button</span>
-      </button>
-      <button class="cmp-carousel__action cmp-carousel__action--next">
-        <span class="sr-only">Next Button</span>
-      </button>
-    </div>
-  `;
-  carouselContainer.appendChild(sectionHeading);
+  // // 创建section heading
+  // const sectionHeading = document.createElement("div");
+  // sectionHeading.className = "section-heading";
+  // sectionHeading.innerHTML = `
+  //   <div class="section-heading__text-group">
+  //     <h2 class="section-heading__title">${title}</h2>
+  //   </div>
+  //   <div class="section-heading__action-buttons cmp-carousel__actions">
+  //     <button class="cmp-carousel__action cmp-carousel__action--previous">
+  //       <span class="sr-only">Previous Button</span>
+  //     </button>
+  //     <button class="cmp-carousel__action cmp-carousel__action--next">
+  //       <span class="sr-only">Next Button</span>
+  //     </button>
+  //   </div>
+  // `;
+  // carouselContainer.appendChild(sectionHeading);
 
-  // 迁移title AEM属性
-  if ($title) {
-    const titleElement = sectionHeading.querySelector(
-      ".section-heading__title"
-    );
-    moveInstrumentation($title, titleElement);
-  }
+  // // 迁移title AEM属性
+  // if ($title) {
+  //   const titleElement = sectionHeading.querySelector(
+  //     ".section-heading__title"
+  //   );
+  //   moveInstrumentation($title, titleElement);
+  // }
 
   // 创建carousel主体
   // const carousel = document.createElement("div");
