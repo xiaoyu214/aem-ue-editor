@@ -68,77 +68,77 @@ export default function decorate(block) {
   }
 
   // 创建carousel主体
-  const carousel = document.createElement("div");
-  carousel.className = "cmp-carousel";
-  carouselContainer.appendChild(carousel);
+  // const carousel = document.createElement("div");
+  // carousel.className = "cmp-carousel";
+  // carouselContainer.appendChild(carousel);
 
   // 创建carousel内容区域
-  const carouselContent = document.createElement("div");
-  carouselContent.className =
-    "cmp-carousel__content cmp-carousel__content--overflow";
-  carousel.appendChild(carouselContent);
+  // const carouselContent = document.createElement("div");
+  // carouselContent.className =
+  //   "cmp-carousel__content cmp-carousel__content--overflow";
+  // carousel.appendChild(carouselContent);
 
   // 创建文章项
-  articles.forEach((article, index) => {
-    const carouselItem = document.createElement("div");
-    carouselItem.className = "cmp-carousel__item";
-    if (index === 0) {
-      carouselItem.classList.add("cmp-carousel__item--active");
-    }
+  // articles.forEach((article, index) => {
+  //   const carouselItem = document.createElement("div");
+  //   carouselItem.className = "cmp-carousel__item";
+  //   if (index === 0) {
+  //     carouselItem.classList.add("cmp-carousel__item--active");
+  //   }
 
-    const articleCard = document.createElement("a");
-    articleCard.className = "cmp-article-card";
-    articleCard.href = article.articleLink;
-    articleCard.setAttribute("aria-label", `Read article: ${article.title}`);
+  //   const articleCard = document.createElement("a");
+  //   articleCard.className = "cmp-article-card";
+  //   articleCard.href = article.articleLink;
+  //   articleCard.setAttribute("aria-label", `Read article: ${article.title}`);
 
-    if (article.articleOpenInNewTab) {
-      articleCard.target = "_blank";
-    }
+  //   if (article.articleOpenInNewTab) {
+  //     articleCard.target = "_blank";
+  //   }
 
-    articleCard.innerHTML = `
-      <div class="cmp-article-card__image cmp-image">
-        <img class="cmp-image__image" src="${article.image}" alt="${
-      article.imageAlt
-    }" loading="lazy">
-      </div>
-      <div class="cmp-article-card__content">
-        <p class="cmp-article-card__date">
-          <time datetime="${article.postedDate.split("T")[0]}">${
-      article.postedDate
-    }</time>
-        </p>
-        <h3 class="cmp-article-card__title">${article.title}</h3>
-        <div class="cmp-article-card__desc">${article.summary}</div>
-      </div>
-    `;
+  //   articleCard.innerHTML = `
+  //     <div class="cmp-article-card__image cmp-image">
+  //       <img class="cmp-image__image" src="${article.image}" alt="${
+  //     article.imageAlt
+  //   }" loading="lazy">
+  //     </div>
+  //     <div class="cmp-article-card__content">
+  //       <p class="cmp-article-card__date">
+  //         <time datetime="${article.postedDate.split("T")[0]}">${
+  //     article.postedDate
+  //   }</time>
+  //       </p>
+  //       <h3 class="cmp-article-card__title">${article.title}</h3>
+  //       <div class="cmp-article-card__desc">${article.summary}</div>
+  //     </div>
+  //   `;
     
-    carouselItem.appendChild(articleCard);
-    carouselContent.appendChild(carouselItem);
+  //   carouselItem.appendChild(articleCard);
+  //   carouselContent.appendChild(carouselItem);
 
-    // 迁移文章项的AEM属性
-    // if (article.originalElement) {
-    //   moveInstrumentation(article.originalElement, carouselItem);
-    // }
-  });
+  //   // 迁移文章项的AEM属性
+  //   // if (article.originalElement) {
+  //   //   moveInstrumentation(article.originalElement, carouselItem);
+  //   // }
+  // });
 
   // 创建底部操作区域
-  const sectionActions = document.createElement("div");
-  sectionActions.className = "section-actions-container";
+  // const sectionActions = document.createElement("div");
+  // sectionActions.className = "section-actions-container";
 
-  const seeAllLink = document.createElement("a");
-  seeAllLink.className = "section-actions-btn btn btn-link";
-  seeAllLink.href = "/news-articles.html";
-  seeAllLink.target = "_blank";
-  const seeAllLinkText = document.createElement("span");
-  seeAllLinkText.innerHTML = seeAllText;
-  // seeAllLink.innerHTML = `<img src="/icons/icon-arrow.svg" alt="Arrow Right">`;
-  // seeAllLink.insertBefore(seeAllLinkText,seeAllLink.firstChild);
-  sectionActions.appendChild(seeAllLink);
-  section.appendChild(sectionActions);
+  // const seeAllLink = document.createElement("a");
+  // seeAllLink.className = "section-actions-btn btn btn-link";
+  // seeAllLink.href = "/news-articles.html";
+  // seeAllLink.target = "_blank";
+  // const seeAllLinkText = document.createElement("span");
+  // seeAllLinkText.innerHTML = seeAllText;
+  // // seeAllLink.innerHTML = `<img src="/icons/icon-arrow.svg" alt="Arrow Right">`;
+  // // seeAllLink.insertBefore(seeAllLinkText,seeAllLink.firstChild);
+  // sectionActions.appendChild(seeAllLink);
+  // section.appendChild(sectionActions);
 
-  if($seeAllText){
-    moveInstrumentation($seeAllText, seeAllLinkText);
-  }
+  // if($seeAllText){
+  //   moveInstrumentation($seeAllText, seeAllLinkText);
+  // }
 
 
   // 清空block并添加新内容
