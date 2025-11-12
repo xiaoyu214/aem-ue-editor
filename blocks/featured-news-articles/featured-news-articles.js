@@ -111,7 +111,7 @@ export default function decorate(block) {
         <div class="cmp-article-card__desc">${article.summary}</div>
       </div>
     `;
-    return false;
+    
     carouselItem.appendChild(articleCard);
     carouselContent.appendChild(carouselItem);
 
@@ -135,7 +135,7 @@ export default function decorate(block) {
   // seeAllLink.insertBefore(seeAllLinkText,seeAllLink.firstChild);
   sectionActions.appendChild(seeAllLink);
   section.appendChild(sectionActions);
-
+return false;
   if($seeAllText){
     moveInstrumentation($seeAllText, seeAllLinkText);
   }
