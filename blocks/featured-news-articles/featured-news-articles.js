@@ -2,7 +2,6 @@ import { createOptimizedPicture } from "../../scripts/aem.js";
 import { moveInstrumentation } from "../../scripts/scripts.js";
 
 export default function decorate(block) {
-  return false;
   // 获取block中的所有div元素
   const divs = block.querySelectorAll(":scope > div");
 
@@ -27,7 +26,7 @@ export default function decorate(block) {
       });
     }
   }
-
+  return false;
   // 创建外层section
   const section = document.createElement("section");
   section.className = "section-with-bottom-spacing";
