@@ -70,7 +70,7 @@ export default async function decorate(block) {
 
     //move card attr
     if (isAuthorEnvironment()) {
-      moveInstrumentation(divs[i], mockup);
+      moveInstrumentation(divs[i], mockup.querySelector('.cmp-carousel__item'));
     }
 
     cardNodes.push(mockup);
@@ -80,7 +80,7 @@ export default async function decorate(block) {
 
   //move attr
   if (isAuthorEnvironment()) {
-    moveInstrumentation(block, mockupContainer);
+    moveInstrumentation(block, mockupContainer.querySelector('.cmp-container'));
 
     if (divs[0]) {
       moveInstrumentation(
