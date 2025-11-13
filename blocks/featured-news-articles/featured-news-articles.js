@@ -70,7 +70,7 @@ export default async function decorate(block) {
 
     //move card attr
     if (isAuthorEnvironment()) {
-      moveInstrumentation(divs[i], mockup.querySelector('.cmp-carousel__item'));
+      moveInstrumentation(findFirstDataElement(divs[i]), mockup.querySelector('.cmp-carousel__item'));
     }
 
     cardNodes.push(mockup);
@@ -80,20 +80,36 @@ export default async function decorate(block) {
 
   //move attr
   if (isAuthorEnvironment()) {
-    moveInstrumentation(block, mockupContainer.querySelector('.cmp-container'));
+    moveInstrumentation(findFirstDataElement(block), mockupContainer.querySelector('.cmp-container'));
 
     if (divs[0]) {
       moveInstrumentation(
-        divs[0],
+        findFirstDataElement(divs[0]),
         mockupContainer.querySelector(".section-heading__text-group")
       );
     }
     if (divs[1]) {
       moveInstrumentation(
-        divs[1],
+        findFirstDataElement(divs[1]),
         mockupContainer.querySelector(".section-actions-container")
       );
     }
   }
   block.replaceWith(mockupContainer);
+}
+
+
+function findFirstDataElement(element) {
+  if (Array.from(element.attributes).some(attr => attr.name.startsWith('data-'))) {
+    return element;
+  }
+  for (const child of element.children) {
+    const hasDataAttr = Array.from(child.attributes).some(attr => 
+      attr.name.startsWith('data-')
+    );
+    if (hasDataAttr) {
+      return child; 
+    }
+  }
+  return null;
 }
