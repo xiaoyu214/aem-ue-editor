@@ -1,193 +1,99 @@
-import { createOptimizedPicture } from "../../scripts/aem.js";
 import { moveInstrumentation } from "../../scripts/scripts.js";
+import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
+export default async function decorate(block) {
+  const divs = block.children;
+  const mockupContainer = document.createRange().createContextualFragment(`
+        <div class="cmp-container container">
+          <div class="carousel panelcontainer">
+            <div class="section-heading">
+              <div class="section-heading__text-group">
+                <h2 class="section-heading__title">${divs[0].textContent.trim()}</h2>
+              </div>
+              <div class="section-heading__action-buttons cmp-carousel__actions">
+                <button class="cmp-carousel__action cmp-carousel__action--previous">
+                  <span class="sr-only">Previous Button</span>
+                </button>
+                <button class="cmp-carousel__action cmp-carousel__action--next">
+                  <span class="sr-only">Previous Button</span>
+                </button>
+              </div>
+            </div>
 
-export default function decorate(block) {
-  // 获取block中的所有div元素
-  const divs = block.querySelectorAll(":scope > div");
+            <div class="cmp-carousel" role="group" aria-live="polite" aria-roledescription="carousel" data-cmp-is="carousel" data-cmp-delay="false" data-slides-per-view="auto" data-slides-per-view-tablet="3" data-slides-per-view-desktop="3" data-loop-slides="false">
+              <div class="cmp-carousel__content cmp-carousel__content--overflow"></div>
+            </div>
+          </div>
+        </div>
+        <div class="section-actions-container">
+          <a class="section-actions-btn btn btn-link" href="${divs[2].textContent.trim()}" target="${
+    divs[3].textContent?.trim().toLowerCase() === "true" ? "_blank" : "_self"
+  }">
+            ${divs[1]?.textContent?.trim()}<img src="./clientlib-site/images/icon-arrow.svg" alt="Arrow Right">
+          </a>
+        </div>`);
 
-  // 提取配置参数
-  const titleDom = divs[0]?.querySelector("div").querySelector("p");
-  const title = titleDom
-    ? titleDom.textContent?.trim()
-    : "Featured News & Articles";
-  const seeAllText = divs[1]?.textContent?.trim() || "See all News & Articles";
-  const slidesPerViewDesktop = divs[2]?.textContent?.trim() || "3";
-  const loopSlides = divs[3]?.textContent?.trim().toLowerCase() === "true";
-  const slidesPerViewMobile = divs[4]?.textContent?.trim() || "auto";
-
-  // 提取文章项数据（从第5个div开始是文章项）
-  const articles = [];
+  const cardNodes = [];
   for (let i = 5; i < divs.length; i++) {
-    const articleDiv = divs[i];
-    const articleData = extractArticleData(articleDiv);
-    if (articleData.title) {
-      articles.push({
-        ...articleData,
-        originalElement: articleDiv, // 保存原始元素用于moveInstrumentation
-      });
-    }
-  }
+    const subDivs = divs[i].children;
+    const title = subDivs[0].textContent?.trim() || "";
+    const summary = subDivs[1].textContent?.trim() || "";
+    const image = subDivs[2].querySelector("img")?.getAttribute("src") || "";
+    const imageAlt = subDivs[3].textContent?.trim() || "";
+    const postedDate = subDivs[4].textContent?.trim();
+    const articleLink = subDivs[5].textContent?.trim();
+    const articleOpenInNewTab =
+      subDivs[6].textContent?.trim().toLowerCase() === "true";
 
-  // 生成唯一的carousel ID
-  const carouselId = `carousel-${Date.now().toString(36)}`;
+    const mockup = document.createRange().createContextualFragment(`
+      <div class="cmp-carousel__item">
+        <a class="cmp-article-card" href="${articleLink}" aria-label="${title}" target="${
+      articleOpenInNewTab ? "_blank" : "_self"
+    }">
+          <div class="cmp-article-card__image cmp-image">
+            <img class="cmp-image__image" src="${image}" alt="${imageAlt}" loading="lazy">
+          </div>
 
-  // 创建外层section
-  const section = document.createElement("section");
-  section.className = "section-with-bottom-spacing";
-
-  // 创建容器
-  const container = document.createElement("div");
-  container.className = "cmp-container container";
-  section.appendChild(container);
-
-  // 创建carousel容器
-  const carouselContainer = document.createElement("div");
-  carouselContainer.className = "carousel panelcontainer";
-  container.appendChild(carouselContainer);
-
-  // 创建section heading
-  const sectionHeading = document.createElement("div");
-  sectionHeading.className = "section-heading";
-  sectionHeading.innerHTML = `
-    <div class="section-heading__text-group">
-      <h2 class="section-heading__title">${title}</h2>
-    </div>
-    <div class="section-heading__action-buttons cmp-carousel__actions">
-      <button class="cmp-carousel__action cmp-carousel__action--previous">
-        <span class="sr-only">Previous Button</span>
-      </button>
-      <button class="cmp-carousel__action cmp-carousel__action--next">
-        <span class="sr-only">Next Button</span>
-      </button>
-    </div>
-  `;
-  carouselContainer.appendChild(sectionHeading);
-
-  // 迁移section heading的AEM属性
-  if (divs[0]) {
-    const titleElement = sectionHeading.querySelector(
-      ".section-heading__title"
-    );
-    moveInstrumentation(divs[0], titleElement);
-  }
-
-  // 创建carousel主体
-  const carousel = document.createElement("div");
-  carousel.id = carouselId;
-  carousel.className = "cmp-carousel";
-  carousel.setAttribute("role", "group");
-  carousel.setAttribute("aria-live", "polite");
-  carousel.setAttribute("aria-roledescription", "carousel");
-  carousel.setAttribute("data-cmp-is", "carousel");
-  carousel.setAttribute("data-cmp-delay", "false");
-  carousel.setAttribute("data-slides-per-view", slidesPerViewMobile);
-  carousel.setAttribute("data-slides-per-view-tablet", slidesPerViewDesktop);
-  carousel.setAttribute("data-slides-per-view-desktop", slidesPerViewDesktop);
-  carousel.setAttribute("data-loop-slides", loopSlides);
-  carouselContainer.appendChild(carousel);
-
-  // 迁移carousel配置的AEM属性
-  if (divs[2]) moveInstrumentation(divs[2], carousel); // slides per view
-  if (divs[3]) moveInstrumentation(divs[3], carousel); // loop slides
-  if (divs[4]) moveInstrumentation(divs[4], carousel); // mobile slides
-
-  // 创建carousel内容区域
-  const carouselContent = document.createElement("div");
-  carouselContent.className =
-    "cmp-carousel__content cmp-carousel__content--overflow";
-  carousel.appendChild(carouselContent);
-
-  // 创建文章项
-  articles.forEach((article, index) => {
-    const carouselItem = document.createElement("div");
-    carouselItem.id = `${carouselId}-item-${index + 1}-tabpanel`;
-    carouselItem.className = "cmp-carousel__item";
-    if (index === 0) {
-      carouselItem.classList.add("cmp-carousel__item--active");
-    }
-
-    const articleCard = document.createElement("a");
-    articleCard.className = "cmp-article-card";
-    articleCard.href = article.articleLink || "./news-details.html";
-    articleCard.setAttribute("aria-label", `Read article: ${article.title}`);
-
-    if (article.articleOpenInNewTab) {
-      articleCard.target = "_blank";
-    }
-
-    articleCard.innerHTML = `
-      <div class="cmp-article-card__image cmp-image">
-        <img class="cmp-image__image" src="${article.image}" alt="${
-      article.imageAlt
-    }" loading="lazy">
+          <div class="cmp-article-card__content">
+            <p class="cmp-article-card__date">
+              <time datetime="${postedDate}" aria-label="Date">
+                <span aria-hidden="true">
+                  ${postedDate}
+                </span>
+              </time>
+            </p>
+            <h3 class="cmp-article-card__title">${title}</h3>
+            <div class="cmp-article-card__desc">${summary}</div>
+          </div>
+        </a>
       </div>
-      <div class="cmp-article-card__content">
-        <p class="cmp-article-card__date">
-          <time datetime="${article.postedDate.split("T")[0]}">${
-      article.postedDate
-    }</time>
-        </p>
-        <h3 class="cmp-article-card__title">${article.title}</h3>
-        <div class="cmp-article-card__desc">${article.summary}</div>
-      </div>
-    `;
+    `);
 
-    carouselItem.appendChild(articleCard);
-    carouselContent.appendChild(carouselItem);
-
-    // 迁移文章项的AEM属性
-    if (article.originalElement) {
-      moveInstrumentation(article.originalElement, carouselItem);
+    //move card attr
+    if (isAuthorEnvironment()) {
+      moveInstrumentation(divs[i], mockup);
     }
-  });
 
-  // 创建底部操作区域
-  const sectionActions = document.createElement("div");
-  sectionActions.className = "section-actions-container";
-
-  const seeAllLink = document.createElement("a");
-  seeAllLink.className = "section-actions-btn btn btn-link";
-  seeAllLink.href = "/news-articles.html"; // 这里可以根据需要从配置中获取
-  seeAllLink.target = "_blank";
-  seeAllLink.innerHTML = `${seeAllText} <img src="./clientlib-site/images/icon-arrow.svg" alt="Arrow Right">`;
-
-  sectionActions.appendChild(seeAllLink);
-  section.appendChild(sectionActions);
-
-  // 迁移"See all"链接的AEM属性
-  if (divs[1]) {
-    moveInstrumentation(divs[1], seeAllLink);
+    cardNodes.push(mockup);
   }
 
-  // 清空block并添加新内容
-  block.innerHTML = "";
-  block.appendChild(section);
+  mockupContainer.querySelector(".cmp-carousel__content").append(...cardNodes);
 
-  // 迁移整个block的AEM属性到section
-  moveInstrumentation(block, section);
-}
+  //move attr
+  if (isAuthorEnvironment()) {
+    moveInstrumentation(block, mockupContainer);
 
-// 从文章div中提取数据
-function extractArticleData(articleDiv) {
-  const title = articleDiv.children[0].textContent?.trim() || "";
-  const summary = articleDiv.children[1].textContent?.trim() || "";
-  const image =
-    articleDiv.children[2].querySelector("img")?.getAttribute("src") || "";
-  const imageAlt = articleDiv.children[3].textContent?.trim() || "";
-  const postedDate = articleDiv.children[4].textContent?.trim();
-  const articleLink = articleDiv.children[5]
-    .querySelector("div:has(a) a")
-    ?.getAttribute("href");
-  const articleOpenInNewTab =
-    articleDiv.children[6].textContent?.trim().toLowerCase() === "true";
-
-  return {
-    title,
-    summary,
-    image,
-    imageAlt,
-    postedDate,
-    articleLink,
-    articleOpenInNewTab,
-  };
+    if (divs[0]) {
+      moveInstrumentation(
+        divs[0],
+        mockupContainer.querySelector(".section-heading__text-group")
+      );
+    }
+    if (divs[1]) {
+      moveInstrumentation(
+        divs[1],
+        mockupContainer.querySelector(".section-actions-container")
+      );
+    }
+  }
+  block.replaceWith(mockupContainer);
 }

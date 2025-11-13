@@ -12,6 +12,7 @@ import {
   loadCSS,
 } from './aem.js';
 
+
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from
@@ -136,6 +137,11 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
+
+  import('./carousel.js').then(() => {
+    // trigger carousel event
+    document.dispatchEvent(new Event('eds-carousel-DOMContentLoaded'));
+  });
 }
 
 async function loadPage() {
