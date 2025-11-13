@@ -109,6 +109,8 @@ function findFirstDataElement(element) {
     );
     if (hasDataAttr) {
       return child; 
+    }else{
+      return findFirstDataElement(child)
     }
   }
   return null;
