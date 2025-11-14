@@ -2,6 +2,7 @@ import { moveInstrumentation } from "../../scripts/scripts.js";
 import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 export default async function decorate(block) {
   const divs = block.children;
+  debugger
   const mockupContainer = document.createRange().createContextualFragment(`
         <div class="cmp-container container">
           <div class="carousel panelcontainer">
