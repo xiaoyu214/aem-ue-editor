@@ -177,6 +177,7 @@
          {
           "title": "Featured News Articles",
           "id": "featured-news-articles",
+          "msmSupport": true,
           "plugins": {
             "xwalk": {
               "page": {
@@ -208,6 +209,7 @@
         {
           "title": "Advantage Cards",
           "id": "advantage-cards",
+          "msmSupport": true,
           "plugins": {
             "xwalk": {
               "page": {
