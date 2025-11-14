@@ -3,7 +3,9 @@ import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 export default async function decorate(block) {
   debugger;
   const divs = block.children;
-  const mockupContainer = document.createElement(`
+  const mockupContainer = document.createElement('div');
+  mockupContainer.className = 'cmp-container container';
+  mockupContainer.innerHTML = `
         <div class="cmp-container container">
           <div class="carousel panelcontainer">
             <div class="section-heading">
@@ -31,7 +33,7 @@ export default async function decorate(block) {
   }">
             ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
-        </div>`);
+        </div>`
 
   // const cardNodes = [];
   // for (let i = 5; i < divs.length; i++) {
