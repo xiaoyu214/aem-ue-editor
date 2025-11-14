@@ -1,6 +1,7 @@
 import { moveInstrumentation } from "../../scripts/scripts.js";
 import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 export default async function decorate(block) {
+  debugger
   const divs = block.children;
   const mockupContainer = document.createRange().createContextualFragment(`
         <div class="cmp-container container">
@@ -91,7 +92,7 @@ export default async function decorate(block) {
     if (divs[0]) {
       moveInstrumentation(
         findFirstDataElement(divs[0]),
-        mockupContainer.querySelector(".section-heading__text-group")
+        mockupContainer.querySelector(".section-heading__title")
       );
     }
     if (divs[1]) {
@@ -101,9 +102,7 @@ export default async function decorate(block) {
       );
     }
   }
-  // block.replaceWith(mockupContainer);
-  block.textContent = '';
-  block.append(mockupContainer);
+  block.replaceWith(mockupContainer);
 }
 
 function findFirstDataElement(element) {
