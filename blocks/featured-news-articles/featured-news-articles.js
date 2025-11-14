@@ -28,8 +28,8 @@ export default async function decorate(block) {
           <a class="section-actions-btn btn btn-link" href="${divs[2].textContent.trim()}" target="${
     divs[3].textContent?.trim().toLowerCase() === "true" ? "_blank" : "_self"
   }">
-            ${divs[1]?.textContent?.trim()}<img src="./clientlib-site/images/icon-arrow.svg" alt="Arrow Right">
-          </a>
+            ${divs[1]?.textContent?.trim()}<img src="./icons/icon-arrow.svg" alt="Arrow Right">
+            </a>
         </div>`);
 
   const cardNodes = [];
