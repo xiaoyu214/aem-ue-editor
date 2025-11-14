@@ -333,5 +333,57 @@
         "label": "Select to open in new tab"
       }
     ]
+  },
+    {
+    "id": "advantage-cards",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "Our Advantages"
+      }
+    ]
+  },
+  {
+    "id": "advantage-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media",
+        "label": "Media",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "value": "",
+        "label": "Headline",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "details",
+        "value": "",
+        "label": "Details",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "navigation",
+        "value": "",
+        "label": "Navigation",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link To"
+      }
+    ]
   }
 ]

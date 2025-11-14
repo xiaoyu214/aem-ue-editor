@@ -17,7 +17,8 @@
       "columns",
       "fragment",
       "quote",
-      "featured-news-articles"
+      "featured-news-articles",
+      "advantage-cards"
     ]
   },
   {
@@ -46,5 +47,11 @@
       "components": [
         "featured-news-article"
       ]
-    }
+    },
+    {
+    "id": "advantage-cards",
+    "components": [
+      "advantage-card"
+    ]
+  }
 ]

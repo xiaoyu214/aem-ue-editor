@@ -86,7 +86,7 @@ export default async function decorate(block) {
   block.replaceWith(mockupContainer);
 
   // trigger block
-  await import('./uifrontend_carousel.js');
+  // await import('./uifrontend_carousel.js');
   await import('./uifrontend_advantage-card.js');
 
   document.dispatchEvent(new Event('eds-DOMContentLoaded'));
