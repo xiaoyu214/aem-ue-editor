@@ -102,7 +102,8 @@ export default async function decorate(block) {
     //   );
     // }
   }
-  block.replaceWith(mockupContainer);
+  block.innerHtml = '';
+  block.append(mockupContainer);
 }
 
 function findFirstDataElement(element) {
