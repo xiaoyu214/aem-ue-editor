@@ -3,7 +3,7 @@ import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 export default async function decorate(block) {
   debugger;
   const divs = block.children;
-  const mockupContainer = document.createRange().createElement(`
+  const mockupContainer = document.createElement(`
         <div class="cmp-container container">
           <div class="carousel panelcontainer">
             <div class="section-heading">
