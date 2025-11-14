@@ -1,9 +1,9 @@
 import { moveInstrumentation } from "../../scripts/scripts.js";
 import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 export default async function decorate(block) {
-  debugger
+  debugger;
   const divs = block.children;
-  const mockupContainer = document.createRange().createContextualFragment(`
+  const mockupContainer = document.createRange().createElement(`
         <div class="cmp-container container">
           <div class="carousel panelcontainer">
             <div class="section-heading">
@@ -84,10 +84,7 @@ export default async function decorate(block) {
 
   //move attr
   if (isAuthorEnvironment()) {
-    moveInstrumentation(
-      findFirstDataElement(block),
-      mockupContainer.querySelector(".cmp-container")
-    );
+    moveInstrumentation(block, mockupContainer.querySelector(".cmp-container"));
 
     if (divs[0]) {
       moveInstrumentation(
@@ -102,8 +99,7 @@ export default async function decorate(block) {
     //   );
     // }
   }
-  block.innerHtml = '';
-  block.append(mockupContainer);
+  block.replaceWith(mockupContainer);
 }
 
 function findFirstDataElement(element) {
