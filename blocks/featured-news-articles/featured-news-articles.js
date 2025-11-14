@@ -85,19 +85,19 @@ export default async function decorate(block) {
   if (isAuthorEnvironment()) {
     moveInstrumentation(
       findFirstDataElement(block),
-      mockupContainer.querySelector(".cmp-container")
+      mockupContainer.firstElementChild
     );
 
     if (divs[0]) {
       moveInstrumentation(
         findFirstDataElement(divs[0]),
-        mockupContainer.querySelector(".section-heading__text-group")
+        mockupContainer.firstElementChild
       );
     }
     if (divs[1]) {
       moveInstrumentation(
         findFirstDataElement(divs[1]),
-        mockupContainer.querySelector(".section-actions-container")
+        mockupContainer.firstElementChild
       );
     }
   }
