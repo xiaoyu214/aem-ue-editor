@@ -70,7 +70,10 @@ export default async function decorate(block) {
 
     //move card attr
     if (isAuthorEnvironment()) {
-      moveInstrumentation(findFirstDataElement(divs[i]), mockup.querySelector('.cmp-carousel__item'));
+      moveInstrumentation(
+        findFirstDataElement(divs[i]),
+        mockup.querySelector(".cmp-carousel__item")
+      );
     }
 
     cardNodes.push(mockup);
@@ -80,7 +83,10 @@ export default async function decorate(block) {
 
   //move attr
   if (isAuthorEnvironment()) {
-    moveInstrumentation(findFirstDataElement(block), mockupContainer.querySelector('.cmp-container'));
+    moveInstrumentation(
+      findFirstDataElement(block),
+      mockupContainer.querySelector(".cmp-container")
+    );
 
     if (divs[0]) {
       moveInstrumentation(
@@ -98,19 +104,19 @@ export default async function decorate(block) {
   block.replaceWith(mockupContainer);
 }
 
-
 function findFirstDataElement(element) {
-  if (Array.from(element.attributes).some(attr => attr.name.startsWith('data-'))) {
+  if (
+    Array.from(element.attributes).some((attr) => attr.name.startsWith("data-"))
+  ) {
     return element;
   }
   for (const child of element.children) {
-    const hasDataAttr = Array.from(child.attributes).some(attr => 
-      attr.name.startsWith('data-')
-    );
-    if (hasDataAttr) {
-      return child; 
-    }else{
-      return findFirstDataElement(child)
+    if (
+      Array.from(child.attributes).some((attr) => attr.name.startsWith("data-"))
+    ) {
+      return child;
+    } else {
+      return findFirstDataElement(child);
     }
   }
   return null;
