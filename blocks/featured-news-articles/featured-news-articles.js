@@ -79,7 +79,7 @@ export default async function decorate(block) {
     cardNodes.push(mockup);
   }
 
-  mockupContainer.querySelector(".cmp-carousel__content").append(...cardNodes);
+  //mockupContainer.querySelector(".cmp-carousel__content").append(...cardNodes);
 
   //move attr
   if (isAuthorEnvironment()) {
