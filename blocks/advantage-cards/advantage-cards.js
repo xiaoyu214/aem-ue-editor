@@ -74,14 +74,14 @@ export default async function decorate(block) {
           </div>`);
 
     if (isAuthorEnvironment()) {
-      moveInstrumentation(findFirstDataElement(card), mockup);
+      moveInstrumentation(findFirstDataElement(card), mockup.querySelector(".cmp-carousel__item"));
     }
     cardNodes.push(mockup);
   });
 
   mockupContainer.querySelector('.cmp-carousel__content').append(...cardNodes);
   if (isAuthorEnvironment()) {
-    moveInstrumentation(findFirstDataElement(block), mockupContainer);
+    moveInstrumentation(findFirstDataElement(block), mockupContainer.querySelector('.carousel'));
   }
   block.replaceWith(mockupContainer);
 
