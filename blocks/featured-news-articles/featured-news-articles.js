@@ -71,10 +71,10 @@ export default async function decorate(block) {
 
     //move card attr
     if (isAuthorEnvironment()) {
-      // moveInstrumentation(
-      //   findFirstDataElement(divs[i]),
-      //   mockup.querySelector(".cmp-carousel__item")
-      // );
+      moveInstrumentation(
+        findFirstDataElement(divs[i]),
+        mockup.querySelector(".cmp-carousel__item")
+      );
     }
 
     cardNodes.push(mockup);
@@ -84,10 +84,10 @@ export default async function decorate(block) {
 
   //move attr
   if (isAuthorEnvironment()) {
-    // moveInstrumentation(
-    //   findFirstDataElement(block),
-    //   mockupContainer.querySelector(".cmp-container")
-    // );
+    moveInstrumentation(
+      findFirstDataElement(block),
+      mockupContainer.querySelector(".cmp-container")
+    );
 
     if (divs[0]) {
       moveInstrumentation(
@@ -95,12 +95,12 @@ export default async function decorate(block) {
         mockupContainer.querySelector(".section-heading__title")
       );
     }
-    // if (divs[1]) {
-    //   moveInstrumentation(
-    //     findFirstDataElement(divs[1]),
-    //     mockupContainer.querySelector(".section-actions-container")
-    //   );
-    // }
+    if (divs[1]) {
+      moveInstrumentation(
+        findFirstDataElement(divs[1]),
+        mockupContainer.querySelector(".section-actions-container")
+      );
+    }
   }
   block.replaceWith(mockupContainer);
 }
