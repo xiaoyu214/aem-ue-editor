@@ -2,7 +2,6 @@ import { moveInstrumentation } from "../../scripts/scripts.js";
 import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 export default async function decorate(block) {
   const divs = block.children;
-  debugger
   const mockupContainer = document.createRange().createContextualFragment(`
         <div class="cmp-container container">
           <div class="carousel panelcontainer">
@@ -29,7 +28,7 @@ export default async function decorate(block) {
           <a class="section-actions-btn btn btn-link" href="${divs[2].textContent.trim()}" target="${
     divs[3].textContent?.trim().toLowerCase() === "true" ? "_blank" : "_self"
   }">
-            ${divs[1]?.textContent?.trim()}<img src="./icons/icon-arrow.svg" alt="Arrow Right">
+            ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
         </div>`);
 

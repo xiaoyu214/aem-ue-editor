@@ -67,7 +67,7 @@ export default async function decorate(block) {
                     ${details}
                   </p>
                   <button class="cmp-advantage-card__btn btn">${navigate}<img
-                  alt="play-icon" src="./icons/icon-play-filled.svg" /></button>
+                  alt="play-icon" src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-play-filled.svg" /></button>
                 </div>
               </div>
             </div>
