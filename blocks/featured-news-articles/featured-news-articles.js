@@ -1,11 +1,27 @@
 import { moveInstrumentation } from "../../scripts/scripts.js";
 import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 export default async function decorate(block) {
-  debugger;
+  const ul = document.createElement('ul');
+  [...block.children].forEach((row) => {
+    const li = document.createElement('li');
+    moveInstrumentation(row, li);
+    while (row.firstElementChild) li.append(row.firstElementChild);
+    [...li.children].forEach((div) => {
+      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
+      else div.className = 'cards-card-body';
+    });
+    ul.append(li);
+  });
+  // ul.querySelectorAll('picture > img').forEach((img) => {
+  //   const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+  //   moveInstrumentation(img, optimizedPic.querySelector('img'));
+  //   img.closest('picture').replaceWith(optimizedPic);
+  // });
+  block.textContent = '';
+  block.append(ul);
+  return false;
   const divs = block.children;
-  const mockupContainer = document.createElement('div');
-  mockupContainer.className = 'cmp-container container';
-  mockupContainer.innerHTML = `
+  const mockupContainer = document.createRange().createContextualFragment(`
         <div class="cmp-container container">
           <div class="carousel panelcontainer">
             <div class="section-heading">
@@ -33,60 +49,63 @@ export default async function decorate(block) {
   }">
             ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
-        </div>`
+        </div>`);
 
-  // const cardNodes = [];
-  // for (let i = 5; i < divs.length; i++) {
-  //   const subDivs = divs[i].children;
-  //   const title = subDivs[0].textContent?.trim() || "";
-  //   const summary = subDivs[1].textContent?.trim() || "";
-  //   const image = subDivs[2].querySelector("img")?.getAttribute("src") || "";
-  //   const imageAlt = subDivs[3].textContent?.trim() || "";
-  //   const postedDate = subDivs[4].textContent?.trim();
-  //   const articleLink = subDivs[5].textContent?.trim();
-  //   const articleOpenInNewTab =
-  //     subDivs[6].textContent?.trim().toLowerCase() === "true";
+  const cardNodes = [];
+  for (let i = 5; i < divs.length; i++) {
+    const subDivs = divs[i].children;
+    const title = subDivs[0].textContent?.trim() || "";
+    const summary = subDivs[1].textContent?.trim() || "";
+    const image = subDivs[2].querySelector("img")?.getAttribute("src") || "";
+    const imageAlt = subDivs[3].textContent?.trim() || "";
+    const postedDate = subDivs[4].textContent?.trim();
+    const articleLink = subDivs[5].textContent?.trim();
+    const articleOpenInNewTab =
+      subDivs[6].textContent?.trim().toLowerCase() === "true";
 
-  //   const mockup = document.createRange().createContextualFragment(`
-  //     <div class="cmp-carousel__item">
-  //       <a class="cmp-article-card" href="${articleLink}" aria-label="${title}" target="${
-  //     articleOpenInNewTab ? "_blank" : "_self"
-  //   }">
-  //         <div class="cmp-article-card__image cmp-image">
-  //           <img class="cmp-image__image" src="${image}" alt="${imageAlt}" loading="lazy">
-  //         </div>
+    const mockup = document.createRange().createContextualFragment(`
+      <div class="cmp-carousel__item">
+        <a class="cmp-article-card" href="${articleLink}" aria-label="${title}" target="${
+      articleOpenInNewTab ? "_blank" : "_self"
+    }">
+          <div class="cmp-article-card__image cmp-image">
+            <img class="cmp-image__image" src="${image}" alt="${imageAlt}" loading="lazy">
+          </div>
 
-  //         <div class="cmp-article-card__content">
-  //           <p class="cmp-article-card__date">
-  //             <time datetime="${postedDate}" aria-label="Date">
-  //               <span aria-hidden="true">
-  //                 ${postedDate}
-  //               </span>
-  //             </time>
-  //           </p>
-  //           <h3 class="cmp-article-card__title">${title}</h3>
-  //           <div class="cmp-article-card__desc">${summary}</div>
-  //         </div>
-  //       </a>
-  //     </div>
-  //   `);
+          <div class="cmp-article-card__content">
+            <p class="cmp-article-card__date">
+              <time datetime="${postedDate}" aria-label="Date">
+                <span aria-hidden="true">
+                  ${postedDate}
+                </span>
+              </time>
+            </p>
+            <h3 class="cmp-article-card__title">${title}</h3>
+            <div class="cmp-article-card__desc">${summary}</div>
+          </div>
+        </a>
+      </div>
+    `);
 
-  //   //move card attr
-  //   if (isAuthorEnvironment()) {
-  //     moveInstrumentation(
-  //       findFirstDataElement(divs[i]),
-  //       mockup.querySelector(".cmp-carousel__item")
-  //     );
-  //   }
+    //move card attr
+    if (isAuthorEnvironment()) {
+      moveInstrumentation(
+        findFirstDataElement(divs[i]),
+        mockup.querySelector(".cmp-carousel__item")
+      );
+    }
 
-  //   cardNodes.push(mockup);
-  // }
+    cardNodes.push(mockup);
+  }
 
-  //mockupContainer.querySelector(".cmp-carousel__content").append(...cardNodes);
+  mockupContainer.querySelector(".cmp-carousel__content").append(...cardNodes);
 
   //move attr
   if (isAuthorEnvironment()) {
-    moveInstrumentation(block, mockupContainer.querySelector(".cmp-container"));
+    moveInstrumentation(
+      findFirstDataElement(block),
+      mockupContainer.querySelector(".cmp-container")
+    );
 
     if (divs[0]) {
       moveInstrumentation(
@@ -94,12 +113,12 @@ export default async function decorate(block) {
         mockupContainer.querySelector(".section-heading__text-group")
       );
     }
-    // if (divs[1]) {
-    //   moveInstrumentation(
-    //     findFirstDataElement(divs[1]),
-    //     mockupContainer.querySelector(".section-actions-container")
-    //   );
-    // }
+    if (divs[1]) {
+      moveInstrumentation(
+        findFirstDataElement(divs[1]),
+        mockupContainer.querySelector(".section-actions-container")
+      );
+    }
   }
   block.replaceWith(mockupContainer);
 }
