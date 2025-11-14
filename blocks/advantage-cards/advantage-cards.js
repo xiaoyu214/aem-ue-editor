@@ -23,10 +23,10 @@ export default async function decorate(block) {
         <!-- Carousel actions - Previous/Next -->
         <div class="cmp-carousel__actions">
           <button class="cmp-carousel__action cmp-carousel__action--previous" type="button" aria-label="Previous">
-            <span class="icon icon--arrow-left"></span>
+            <span class="visually-hidden"></span>
           </button>
           <button class="cmp-carousel__action cmp-carousel__action--next" type="button" aria-label="Next">
-            <span class="icon icon--arrow-right"></span>
+            <span class="visually-hidden"></span>
           </button>
         </div>
 
@@ -74,14 +74,14 @@ export default async function decorate(block) {
           </div>`);
 
     if (isAuthorEnvironment()) {
-      moveInstrumentation(card, mockup);
+      moveInstrumentation(findFirstDataElement(card), mockup);
     }
     cardNodes.push(mockup);
   });
 
   mockupContainer.querySelector('.cmp-carousel__content').append(...cardNodes);
   if (isAuthorEnvironment()) {
-    moveInstrumentation(block, mockupContainer);
+    moveInstrumentation(findFirstDataElement(block), mockupContainer);
   }
   block.replaceWith(mockupContainer);
 
@@ -90,4 +90,23 @@ export default async function decorate(block) {
   await import('./uifrontend_advantage-card.js');
 
   document.dispatchEvent(new Event('eds-DOMContentLoaded'));
+}
+
+
+function findFirstDataElement(element) {
+  if (
+    Array.from(element.attributes).some((attr) => attr.name.startsWith("data-"))
+  ) {
+    return element;
+  }
+  for (const child of element.children) {
+    if (
+      Array.from(child.attributes).some((attr) => attr.name.startsWith("data-"))
+    ) {
+      return child;
+    } else {
+      return findFirstDataElement(child);
+    }
+  }
+  return null;
 }
