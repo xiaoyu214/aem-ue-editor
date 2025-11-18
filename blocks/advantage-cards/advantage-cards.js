@@ -1,5 +1,5 @@
 import { isAuthorEnvironment, safeText } from '../../scripts/utils.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { transferInstrumentation } from "../../scripts/utils.js";
 
 export default async function decorate(block) {
 
@@ -74,14 +74,14 @@ export default async function decorate(block) {
           </div>`);
 
     if (isAuthorEnvironment()) {
-      moveInstrumentation(findFirstDataElement(card), mockup.querySelector(".cmp-carousel__item"));
+      transferInstrumentation(findFirstDataElement(card), mockup);
     }
     cardNodes.push(mockup);
   });
 
   mockupContainer.querySelector('.cmp-carousel__content').append(...cardNodes);
   if (isAuthorEnvironment()) {
-    moveInstrumentation(findFirstDataElement(block), mockupContainer.querySelector('.carousel'));
+    transferInstrumentation(findFirstDataElement(block), mockupContainer);
   }
   block.replaceWith(mockupContainer);
 

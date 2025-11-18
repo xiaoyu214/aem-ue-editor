@@ -1,7 +1,6 @@
-import { moveInstrumentation } from "../../scripts/scripts.js";
-import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
+import { transferInstrumentation } from "../../scripts/utils.js";
+import { isAuthorEnvironment } from "../../scripts/utils.js";
 export default async function decorate(block) {
-  debugger
   const divs = block.children;
   const mockupContainer = document.createRange().createContextualFragment(`
         <div class="cmp-container container">
@@ -71,10 +70,7 @@ export default async function decorate(block) {
 
     //move card attr
     if (isAuthorEnvironment()) {
-      moveInstrumentation(
-        findFirstDataElement(divs[i]),
-        mockup.querySelector(".cmp-carousel__item")
-      );
+      transferInstrumentation(findFirstDataElement(divs[i]), mockup);
     }
 
     cardNodes.push(mockup);
@@ -84,25 +80,25 @@ export default async function decorate(block) {
 
   //move attr
   if (isAuthorEnvironment()) {
-    moveInstrumentation(
+    transferInstrumentation(
       findFirstDataElement(block),
       mockupContainer.querySelector(".cmp-container")
     );
 
     if (divs[0]) {
-      moveInstrumentation(
-        findFirstDataElement(divs[0]),
-        mockupContainer.querySelector(".section-heading__title")
-      );
+      transferInstrumentation(findFirstDataElement(divs[0]), mockupContainer);
     }
     if (divs[1]) {
-      moveInstrumentation(
-        findFirstDataElement(divs[1]),
-        mockupContainer.querySelector(".section-actions-container")
-      );
+      transferInstrumentation(findFirstDataElement(divs[1]), mockupContainer);
     }
   }
+
   block.replaceWith(mockupContainer);
+
+  import("./carousel.js").then(() => {
+    // trigger carousel event
+    document.dispatchEvent(new Event("eds-carousel-DOMContentLoaded"));
+  });
 }
 
 function findFirstDataElement(element) {
