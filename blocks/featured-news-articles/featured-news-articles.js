@@ -17,5 +17,6 @@ export default async function decorate(block) {
     }
   }
 
-  block.replaceWith(mockupContainer);
+  block.textContent = '';
+  block.append(mockupContainer);
 }
