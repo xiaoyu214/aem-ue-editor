@@ -95,7 +95,7 @@ export default async function decorate(block) {
 
   block.replaceWith(mockupContainer);
 
-  import("./carousel.js").then(() => {
+  import("../../scripts/carousel.js").then(() => {
     // trigger carousel event
     document.dispatchEvent(new Event("eds-carousel-DOMContentLoaded"));
   });
