@@ -13,7 +13,7 @@ export default async function decorate(block) {
       headline.className = "section-heading__title";
       headline.textContent = divs[0].textContent.trim();
       mockupContainer.appendChild(headline);
-      transferInstrumentation(divs[0], headline);
+      // transferInstrumentation(divs[0], headline);
     }
   }
 
