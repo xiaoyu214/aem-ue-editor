@@ -10,6 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
+
 /* eslint-env browser */
 function sampleRUM(checkpoint, data) {
   // eslint-disable-next-line max-len
@@ -477,7 +478,7 @@ function decorateIcons(element, prefix = '') {
  * @param {Element} main The container element
  */
 function decorateSections(main) {
-  main.querySelectorAll(':scope > div:not([data-section-status])').forEach((section) => {
+  main.querySelectorAll(':scope > div:not([data-section-status])').forEach((section, index) => {
     const wrappers = [];
     let defaultContent = false;
     [...section.children].forEach((e) => {
@@ -492,24 +493,141 @@ function decorateSections(main) {
     wrappers.forEach((wrapper) => section.append(wrapper));
     section.classList.add('section');
     section.dataset.sectionStatus = 'initialized';
-    section.style.display = 'none';
+    
+    // LCP Optimization: Don't hide the first section to prevent render delay
+    const isFirstSection = index === 0;
+    if (isFirstSection) {
+      // First section remains visible for immediate LCP rendering
+      section.style.visibility = 'visible';
+      section.style.opacity = '1';
+      section.dataset.lcpOptimized = 'true';
+      console.log('LCP Section optimization: First section kept visible for immediate rendering');
+    } else {
+      // Subsequent sections use normal hiding/showing behavior
+      section.style.visibility = 'hidden';
+      section.style.opacity = '0';
+      section.style.transition = 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out';
+    }
 
-    // Process section metadata
+    // Process section metadata - check multiple sources
+    let meta = {};
+    
+    // 1. Check for traditional section-metadata div (for backwards compatibility)
     const sectionMeta = section.querySelector('div.section-metadata');
     if (sectionMeta) {
-      const meta = readBlockConfig(sectionMeta);
-      Object.keys(meta).forEach((key) => {
+      meta = readBlockConfig(sectionMeta);
+      sectionMeta.parentNode.remove();
+    }
+    
+    // 2. Check for UE data attributes or model data on the section element
+    const ueModelData = section.dataset.ueModel;
+    if (ueModelData) {
+      try {
+        const modelData = JSON.parse(ueModelData);
+        meta = { ...meta, ...modelData };
+      } catch (e) {
+        // Invalid JSON, skip
+      }
+    }
+    
+    // 3. Check for individual UE data attributes
+    const ueFields = ['marginTop', 'marginBottom', 'paddingTop', 'paddingBottom', 'backgroundColor', 'style'];
+    ueFields.forEach(field => {
+      const dataAttr = `data-${field.toLowerCase()}`;
+      if (section.hasAttribute(dataAttr)) {
+        meta[field] = section.getAttribute(dataAttr);
+      }
+    });
+    
+    // Apply metadata as CSS classes
+    const cssClassFields = ['marginTop', 'marginBottom', 'paddingTop', 'paddingBottom', 'backgroundColor', 'style'];
+    
+    Object.keys(meta).forEach((key) => {
+      if (cssClassFields.includes(key)) {
         if (key === 'style') {
+          // Handle multiselect style field - can have multiple values separated by commas
           const styles = meta.style
             .split(',')
             .filter((style) => style)
             .map((style) => toClassName(style.trim()));
           styles.forEach((style) => section.classList.add(style));
         } else {
-          section.dataset[toCamelCase(key)] = meta[key];
+          // Handle single CSS class fields - apply the value directly as a CSS class
+          if (meta[key] && meta[key].trim()) {
+            section.classList.add(meta[key].trim());
+          }
         }
-      });
-      sectionMeta.parentNode.remove();
+      } else {
+        // Other metadata fields become data attributes
+        section.dataset[toCamelCase(key)] = meta[key];
+      }
+    });
+  });
+}
+
+/**
+ * Updates section metadata dynamically (for Universal Editor)
+ * @param {Element} section The section element to update
+ */
+function updateSectionMetadata(section) {
+  // Process section metadata - check multiple sources (same as decorateSections)
+  let meta = {};
+  
+  // 1. Check for traditional section-metadata div (for backwards compatibility)
+  const sectionMeta = section.querySelector('div.section-metadata');
+  if (sectionMeta) {
+    meta = readBlockConfig(sectionMeta);
+  }
+  
+  // 2. Check for UE data attributes or model data on the section element
+  const ueModelData = section.dataset.ueModel;
+  if (ueModelData) {
+    try {
+      const modelData = JSON.parse(ueModelData);
+      meta = { ...meta, ...modelData };
+    } catch (e) {
+      // Invalid JSON, skip
+    }
+  }
+  
+  // 3. Check for individual UE data attributes
+  const ueFields = ['marginTop', 'marginBottom', 'paddingTop', 'paddingBottom', 'backgroundColor', 'style'];
+  ueFields.forEach(field => {
+    const dataAttr = `data-${field.toLowerCase()}`;
+    if (section.hasAttribute(dataAttr)) {
+      meta[field] = section.getAttribute(dataAttr);
+    }
+  });
+  
+  // Fields that should be applied as CSS classes to the section element
+  const cssClassFields = ['marginTop', 'marginBottom', 'paddingTop', 'paddingBottom', 'backgroundColor', 'style'];
+  
+  // Remove existing styling classes from section
+  const existingClasses = Array.from(section.classList).filter(cls => 
+    cls.startsWith('mt-') || cls.startsWith('mb-') || cls.startsWith('pt-') || cls.startsWith('pb-') ||
+    cls.startsWith('bg-') || cls === 'highlight' || cls === 'full-width' || cls === 'text-center'
+  );
+  existingClasses.forEach(cls => section.classList.remove(cls));
+  
+  // Apply new metadata as CSS classes
+  Object.keys(meta).forEach((key) => {
+    if (cssClassFields.includes(key)) {
+      if (key === 'style') {
+        // Handle multiselect style field - can have multiple values separated by commas
+        const styles = meta.style
+          .split(',')
+          .filter((style) => style)
+          .map((style) => toClassName(style.trim()));
+        styles.forEach((style) => section.classList.add(style));
+      } else {
+        // Handle single CSS class fields - apply the value directly as a CSS class
+        if (meta[key] && meta[key].trim()) {
+          section.classList.add(meta[key].trim());
+        }
+      }
+    } else {
+      // Other metadata fields become data attributes
+      section.dataset[toCamelCase(key)] = meta[key];
     }
   });
 }
@@ -616,11 +734,33 @@ function decorateBlocks(main) {
  * @returns {Promise}
  */
 async function loadHeader(header) {
+  const { loadHeaderFragment } = await import('./scripts.js');
+  
+  try {
+    // Try to load header from fragment first
+    const fragmentContent = await loadHeaderFragment();
+    if (fragmentContent) {
+      const headerBlock = buildBlock('header', '');
+      
+      // Populate the header block with fragment content
+      headerBlock.innerHTML = fragmentContent;
+      
+      header.append(headerBlock);
+      decorateBlock(headerBlock);
+      return loadBlock(headerBlock);
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log('Failed to load header fragment, falling back to default header:', error);
+  }
+
+  // Fallback to original header loading
   const headerBlock = buildBlock('header', '');
   header.append(headerBlock);
   decorateBlock(headerBlock);
   return loadBlock(headerBlock);
 }
+
 
 /**
  * Loads a block named 'footer' into footer
@@ -628,6 +768,27 @@ async function loadHeader(header) {
  * @returns {Promise}
  */
 async function loadFooter(footer) {
+  const { loadFooterFragment } = await import('./scripts.js');
+  
+  try {
+    // Try to load footer from fragment first
+    const fragmentContent = await loadFooterFragment();
+    if (fragmentContent) {
+      const footerBlock = buildBlock('footer', '');
+      
+      // Populate the footer block with fragment content
+      footerBlock.innerHTML = fragmentContent;
+      
+      footer.append(footerBlock);
+      decorateBlock(footerBlock);
+      return loadBlock(footerBlock);
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log('Failed to load footer fragment, falling back to default footer:', error);
+  }
+
+  // Fallback to original footer loading
   const footerBlock = buildBlock('footer', '');
   footer.append(footerBlock);
   decorateBlock(footerBlock);
@@ -667,7 +828,15 @@ async function loadSection(section, loadCallback) {
     }
     if (loadCallback) await loadCallback(section);
     section.dataset.sectionStatus = 'loaded';
-    section.style.display = null;
+    
+    // LCP Optimization: Skip visibility changes for already-visible LCP sections
+    const isLCPOptimized = section.dataset.lcpOptimized === 'true';
+    if (!isLCPOptimized) {
+      section.style.visibility = 'visible';
+      section.style.opacity = '1';
+    } else {
+      console.log('LCP Section already visible, skipping visibility change to avoid render delay');
+    }
   }
 }
 
@@ -689,7 +858,7 @@ async function loadSections(element) {
 
 init();
 
-export {
+export { 
   buildBlock,
   createOptimizedPicture,
   decorateBlock,
@@ -711,6 +880,7 @@ export {
   setup,
   toCamelCase,
   toClassName,
+  updateSectionMetadata,
   waitForFirstImage,
   wrapTextNodes,
 };
