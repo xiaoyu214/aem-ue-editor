@@ -31,7 +31,7 @@ export default async function decorate(block) {
             ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
         </div>`);
-
+debugger
   const cardNodes = [];
   for (let i = 5; i < divs.length; i++) {
     const subDivs = divs[i].children;
