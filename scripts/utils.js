@@ -50,6 +50,7 @@ export function transferAttributes(from, to, attributes) {
  */
 export function transferInstrumentation(from, to) {
   const fromElement = hasAEMAttributes(from) ? from  : findFirstLevelAEMElement(from);
+  if(!fromElement)return;
   transferAttributes(
     fromElement,
     to,
