@@ -1,4 +1,4 @@
-import { transferInstrumentation } from "../../scripts/utils.js";
+import { moveInstrumentation } from "../../scripts/scripts.js";
 import { isAuthorEnvironment } from "../../scripts/utils.js";
 export default async function decorate(block) {
   const divs = block.children;
@@ -13,9 +13,9 @@ export default async function decorate(block) {
       headline.className = "section-heading__title";
       headline.textContent = divs[0].textContent.trim();
       mockupContainer.appendChild(headline);
-      transferInstrumentation(divs[0], headline);
+      moveInstrumentation(divs[0], headline);
     }
   }
 
-  block.replaceWith(mockupContainer);
+  return mockupContainer;
 }
