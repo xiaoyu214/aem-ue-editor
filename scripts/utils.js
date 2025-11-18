@@ -43,21 +43,44 @@ export function transferAttributes(from, to, attributes) {
   });
 }
 
-
 /**
  * Move instrumentation attributes from a given element to another given element virtual node.
  * @param {Element} from the element to copy attributes from
  * @param {Element} to the element to copy attributes to
  */
 export function transferInstrumentation(from, to) {
+  const fromElement = hasAEMAttributes(from) ? from  : findFirstLevelAEMElement(from);
   transferAttributes(
-    from,
+    fromElement,
     to,
-    [...from.attributes]
+    [...fromElement.attributes]
       .map(({ nodeName }) => nodeName)
       .filter(
         (attr) =>
           attr.startsWith("data-aue-") || attr.startsWith("data-richtext-")
       )
   );
+}
+
+/** 
+ * Helper to check if an element has AEM-specific data attributes
+ * @param {Element} el - Element to check
+ * @returns {boolean} True if element has AEM data attributes
+ */
+function hasAEMAttributes(el) {
+  return Array.from(el.attributes).some(attr => attr.name.startsWith('data-aue-'));
+}
+
+/**
+ * Recursively finds the first element (starting from the given element) that contains any data-aue attribute.
+ *
+ * @param {Element} element - The root DOM element to start searching from
+ * @returns {Element|null} The first element with data-* attribute, or null if none found
+ */
+function findFirstLevelAEMElement(element) {
+  if (hasAEMAttributes(element))return element;
+  for (const child of element.children) {
+    return hasAEMAttributes(child) ? child : findFirstLevelAEMElement(child);
+  }
+  return null;
 }

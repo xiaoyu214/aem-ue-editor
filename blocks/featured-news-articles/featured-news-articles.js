@@ -70,7 +70,7 @@ export default async function decorate(block) {
 
     //move card attr
     if (isAuthorEnvironment()) {
-      transferInstrumentation(findFirstDataElement(divs[i]), mockup);
+      transferInstrumentation(divs[i], mockup);
     }
 
     cardNodes.push(mockup);
@@ -81,40 +81,17 @@ export default async function decorate(block) {
   //move attr
   if (isAuthorEnvironment()) {
     transferInstrumentation(
-      findFirstDataElement(block),
+      block,
       mockupContainer.querySelector(".cmp-container")
     );
 
     if (divs[0]) {
-      transferInstrumentation(findFirstDataElement(divs[0]), mockupContainer);
+      transferInstrumentation(divs[0], mockupContainer);
     }
     if (divs[1]) {
-      transferInstrumentation(findFirstDataElement(divs[1]), mockupContainer);
+      transferInstrumentation(divs[1], mockupContainer);
     }
   }
 
   block.replaceWith(mockupContainer);
-
-  import("../../scripts/carousel.js").then(() => {
-    // trigger carousel event
-    document.dispatchEvent(new Event("eds-carousel-DOMContentLoaded"));
-  });
-}
-
-function findFirstDataElement(element) {
-  if (
-    Array.from(element.attributes).some((attr) => attr.name.startsWith("data-"))
-  ) {
-    return element;
-  }
-  for (const child of element.children) {
-    if (
-      Array.from(child.attributes).some((attr) => attr.name.startsWith("data-"))
-    ) {
-      return child;
-    } else {
-      return findFirstDataElement(child);
-    }
-  }
-  return null;
 }
