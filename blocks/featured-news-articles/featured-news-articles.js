@@ -83,10 +83,10 @@ export default async function decorate(block) {
     transferInstrumentation(block, mockupContainer);
 
     if (divs[0]) {
-      transferInstrumentation(divs[0], mockupContainer.querySelectorAll('.section-heading__title'));
+      transferInstrumentation(divs[0], mockupContainer.querySelector('.section-heading__title'));
     }
     if (divs[1]) {
-      transferInstrumentation(divs[1], mockupContainer.querySelectorAll('.section-actions-container'));
+      transferInstrumentation(divs[1], mockupContainer.querySelector('.section-actions-container'));
     }
   }
 
