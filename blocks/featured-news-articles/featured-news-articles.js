@@ -7,7 +7,7 @@ export default async function decorate(block) {
           <div class="carousel panelcontainer">
             <div class="section-heading">
               <div class="section-heading__text-group">
-                <h2 class="section-heading__title">222</h2>
+                <h2 class="section-heading__title">${divs[0].textContent.trim()}</h2>
               </div>
               <div class="section-heading__action-buttons cmp-carousel__actions">
                 <button class="cmp-carousel__action cmp-carousel__action--previous">
@@ -25,13 +25,15 @@ export default async function decorate(block) {
           </div>
         </div>
         <div class="section-actions-container">
-          <a class="section-actions-btn btn btn-link">
-            333<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
+          <a class="section-actions-btn btn btn-link" href="${divs[2].textContent.trim()}" target="${
+    divs[3].textContent?.trim().toLowerCase() === "true" ? "_blank" : "_self"
+  }">
+            ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
         </div>`);
-        
+  debugger;
   const cardNodes = [];
-  for (let i = 0; i < divs.length; i++) {
+  for (let i = 5; i < divs.length; i++) {
     const subDivs = divs[i].children;
     const title = subDivs[0].textContent?.trim() || "";
     const summary = subDivs[1].textContent?.trim() || "";
@@ -78,14 +80,14 @@ export default async function decorate(block) {
 
   //move attr
   if (isAuthorEnvironment()) {
-    transferInstrumentation(block, mockupContainer);
+   // transferInstrumentation(block, mockupContainer);
 
-    // if (divs[0]) {
-    //   transferInstrumentation(divs[0], mockupContainer.querySelector('.section-heading__title'));
-    // }
-    // if (divs[1]) {
-    //   transferInstrumentation(divs[1], mockupContainer.querySelector('.section-actions-container'));
-    // }
+    if (divs[0]) {
+      transferInstrumentation(divs[0], mockupContainer.querySelector('.section-heading__title'));
+    }
+    if (divs[1]) {
+      transferInstrumentation(divs[1], mockupContainer.querySelector('.section-actions-container'));
+    }
   }
 
   block.replaceWith(mockupContainer);
