@@ -256,37 +256,6 @@
       }
     ]
   },
-   {
-    "id": "featured-news-articles",
-    "fields": [
-      {
-          "component": "text",
-          "valueType": "string",
-          "name": "title",
-          "label": "Title",
-          "value": "Featured News Articles"
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "seeAllButtonText",
-          "label": "See All Articles Button Text",
-          "value": "See all News Articles"
-        },
-        {
-          "component": "aem-content",
-          "valueType": "string",
-          "name": "seeAllButtonLinkTo",
-          "label": "See All Articles Button LinkTo"
-        },
-        {
-          "component": "boolean",
-          "valueType": "boolean",
-          "name": "openLinkInNewTab",
-          "label": "Open link in new tab"
-        }
-    ]
-  },
   {
     "id": "featured-news-article",
     "fields": [
