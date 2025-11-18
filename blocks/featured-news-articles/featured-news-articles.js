@@ -2,13 +2,13 @@ import { transferInstrumentation } from "../../scripts/utils.js";
 import { isAuthorEnvironment } from "../../scripts/utils.js";
 export default async function decorate(block) {
   const divs = block.children;
-  const mockupContainer = document.createElement('div'); // 真实DOM容器
+  const mockupContainer = document.createElement("div"); // 真实DOM容器
+
   mockupContainer.innerHTML = `
         <div class="cmp-container container">
           <div class="carousel panelcontainer">
             <div class="section-heading">
               <div class="section-heading__text-group">
-                <h2 class="section-heading__title">${divs[0].textContent.trim()}</h2>
               </div>
               <div class="section-heading__action-buttons cmp-carousel__actions">
                 <button class="cmp-carousel__action cmp-carousel__action--previous">
@@ -31,7 +31,7 @@ export default async function decorate(block) {
   }">
             ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
-</div>`
+</div>`;
   const cardNodes = [];
   for (let i = 5; i < divs.length; i++) {
     const subDivs = divs[i].children;
@@ -43,7 +43,7 @@ export default async function decorate(block) {
     const articleLink = subDivs[5].textContent?.trim();
     const articleOpenInNewTab =
       subDivs[6].textContent?.trim().toLowerCase() === "true";
-    const mockup= document.createElement('div');
+    const mockup = document.createElement("div");
     mockup.innerHTML = `
       <div class="cmp-carousel__item">
         <a class="cmp-article-card" href="${articleLink}" aria-label="${title}" target="${
@@ -83,11 +83,20 @@ export default async function decorate(block) {
     transferInstrumentation(block, mockupContainer);
 
     if (divs[0]) {
-      transferInstrumentation(divs[0], mockupContainer.querySelector('.section-heading__title'));
+      const headline = document.createElement("h2");
+      headline.className = "section-heading__title";
+      headline.textContent = divs[0].textContent.trim();
+      mockupContainer
+        .querySelector(".section-heading__text-group")
+        .appendChild(headline);
+      transferInstrumentation(divs[0], headline);
     }
-    if (divs[1]) {
-      transferInstrumentation(divs[1], mockupContainer.querySelector('.section-actions-container'));
-    }
+    // if (divs[1]) {
+    //   transferInstrumentation(
+    //     divs[1],
+    //     mockupContainer.querySelector(".section-actions-container")
+    //   );
+    // }
   }
 
   block.replaceWith(mockupContainer);
