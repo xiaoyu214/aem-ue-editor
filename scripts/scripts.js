@@ -405,10 +405,10 @@ export async function fetchPlaceholders(prefix = 'default') {
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
-  // import("./carousel.js").then(() => {
-  //   // trigger carousel event
-  //   document.dispatchEvent(new Event("eds-carousel-DOMContentLoaded"));
-  // });
+  import("./carousel.js").then(() => {
+    // trigger carousel event
+    document.dispatchEvent(new Event("eds-carousel-DOMContentLoaded"));
+  });
 
   // load anything that can be postponed to the latest here
 }
