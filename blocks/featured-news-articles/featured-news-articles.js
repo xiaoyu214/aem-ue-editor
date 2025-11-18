@@ -2,7 +2,8 @@ import { transferInstrumentation } from "../../scripts/utils.js";
 import { isAuthorEnvironment } from "../../scripts/utils.js";
 export default async function decorate(block) {
   const divs = block.children;
-  const mockupContainer = document.createRange().createContextualFragment(`
+  const mockupContainer = document.createElement('div'); // 真实DOM容器
+  mockupContainer.innerHTML = `
         <div class="cmp-container container">
           <div class="carousel panelcontainer">
             <div class="section-heading">
@@ -30,8 +31,7 @@ export default async function decorate(block) {
   }">
             ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
-        </div>`);
-  debugger;
+</div>`
   const cardNodes = [];
   for (let i = 5; i < divs.length; i++) {
     const subDivs = divs[i].children;
@@ -43,8 +43,8 @@ export default async function decorate(block) {
     const articleLink = subDivs[5].textContent?.trim();
     const articleOpenInNewTab =
       subDivs[6].textContent?.trim().toLowerCase() === "true";
-
-    const mockup = document.createRange().createContextualFragment(`
+    const mockup= document.createElement('div');
+    mockup.innerHTML = `
       <div class="cmp-carousel__item">
         <a class="cmp-article-card" href="${articleLink}" aria-label="${title}" target="${
       articleOpenInNewTab ? "_blank" : "_self"
@@ -66,7 +66,7 @@ export default async function decorate(block) {
           </div>
         </a>
       </div>
-    `);
+    `;
 
     //move card attr
     if (isAuthorEnvironment()) {
