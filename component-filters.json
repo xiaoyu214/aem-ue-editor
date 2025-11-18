@@ -19,7 +19,8 @@
       "quote",
       "featured-news-articles",
       "advantage-cards",
-      "help-me-choose"
+      "help-me-choose",
+      "carousel"
     ]
   },
   {
@@ -28,6 +29,12 @@
       "card"
     ]
   },
+  {
+      "id": "carousel",
+      "components": [
+        "carousel-slide"
+      ]
+    },
   {
     "id": "columns",
     "components": [
