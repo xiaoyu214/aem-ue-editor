@@ -97,4 +97,6 @@ export default async function decorate(block) {
   }
 
   block.replaceWith(mockupContainer);
+
+  document.dispatchEvent(new Event('eds-DOMContentLoaded'));
 }
