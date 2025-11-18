@@ -31,7 +31,7 @@ export default async function decorate(block) {
             ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
         </div>`);
-debugger
+  debugger;
   const cardNodes = [];
   for (let i = 5; i < divs.length; i++) {
     const subDivs = divs[i].children;
@@ -80,16 +80,13 @@ debugger
 
   //move attr
   if (isAuthorEnvironment()) {
-    transferInstrumentation(
-      block,
-      mockupContainer.querySelector(".cmp-container")
-    );
+    transferInstrumentation(block, mockupContainer);
 
     if (divs[0]) {
-      transferInstrumentation(divs[0], mockupContainer);
+      transferInstrumentation(divs[0], mockupContainer.querySelectorAll('.section-heading__title'));
     }
     if (divs[1]) {
-      transferInstrumentation(divs[1], mockupContainer);
+      transferInstrumentation(divs[1], mockupContainer.querySelectorAll('.section-actions-container'));
     }
   }
 
