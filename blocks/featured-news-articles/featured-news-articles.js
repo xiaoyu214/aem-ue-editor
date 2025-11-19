@@ -98,8 +98,9 @@ export default async function decorate(block) {
 
   block.replaceWith(mockupContainer);
 
-  console.log(window.initializeSwiperOnAEMCarousel,11111)
+  await import("../../scripts/carousel.js");
+
   if (window.initializeSwiperOnAEMCarousel) {
-    window.initializeSwiperOnAEMCarousel(mockupContainer);
+    window.initializeSwiperOnAEMCarousel(mockupContainer.querySelector('.cmp-container'));
   }
 }
