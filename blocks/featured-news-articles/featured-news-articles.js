@@ -4,6 +4,7 @@ import {
 } from "../../scripts/utils.js";
 const itemsStartIndex = 5;
 export default async function decorate(block) {
+  debugger
   const divs = block.children;
   const itemCount = Number(divs[4].textContent.trim()) || 7;
   const mockupContainer = document.createRange().createContextualFragment(`
