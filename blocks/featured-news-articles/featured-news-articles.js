@@ -1,7 +1,8 @@
 import { transferInstrumentation } from "../../scripts/utils.js";
 import { isAuthorEnvironment } from "../../scripts/utils.js";
 export default async function decorate(block) {
-
+  debugger
+  return false;
   // const divs = block.children;
   // const div = document.createElement("h2");
   // div.innerHTML = divs[0].textContent.trim();
