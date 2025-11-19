@@ -91,7 +91,7 @@ export default async function decorate(block) {
 
   if (window.initializeSwiperOnAEMCarousel) {
     window.initializeSwiperOnAEMCarousel(
-      mockupContainer.querySelector(".cmp-container")
+      block.querySelector(".cmp-container")
     );
   }
 }
