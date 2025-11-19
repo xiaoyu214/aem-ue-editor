@@ -3,7 +3,6 @@ import { transferInstrumentation } from "../../scripts/utils.js";
 
 const itemsStartIndex = 3;
 export default async function decorate(block) {
-  debugger;
   const divs = block.children;
   const title = divs[0].textContent.trim() || "Our Advantages";
   const itemCount = Number(divs[1].textContent.trim()) || 3;
@@ -50,11 +49,6 @@ export default async function decorate(block) {
     const details = safeText(divs.item(2));
     const navigate = safeText(divs.item(3));
     const mediaHTML = card.querySelector("picture")?.innerHTML ?? "";
-
-    if (headline === "") {
-      console.log("advantage card must have a headline");
-      return;
-    }
 
     const mockup = document.createRange().createContextualFragment(`
           <div class="cmp-carousel__item">
