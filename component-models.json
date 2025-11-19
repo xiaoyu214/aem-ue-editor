@@ -298,13 +298,15 @@
         "value": "Our Advantages"
       },
       {
-        "label": "Number of Items",
+        "component": "number",
         "name": "itemCount",
+        "label": "Number of Items",
         "value": 3,
-        "type": "number",
         "description": "Number of advantage cards to display in the carousel (default: 3)",
-        "min": 1,
-        "max": 4
+        "validation": {
+          "min": 1,
+          "max": 4
+        }
       },
       {
         "component": "number",
