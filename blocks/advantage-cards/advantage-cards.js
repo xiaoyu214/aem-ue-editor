@@ -1,12 +1,13 @@
-import { isAuthorEnvironment, safeText } from '../../scripts/utils.js';
+import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 import { transferInstrumentation } from "../../scripts/utils.js";
 
 export default async function decorate(block) {
-
-  const mockupContainer = document.createRange().createContextualFragment(`<div class='container'>
+  debugger
+  const mockupContainer = document.createRange()
+    .createContextualFragment(`<div class='container'>
     <div class="carousel panelcontainer">
       <div class="section-heading content-center">
-        <h2>${block.firstElementChild.textContent.trim()}</h2>
+        <h2>${block.firstElementChild.textContent.trim() || 'Our Advantages'}</h2>
       </div>
       <div
         class="cmp-carousel"
@@ -38,14 +39,14 @@ export default async function decorate(block) {
 
   const cardNodes = [];
   [...block.children].forEach((card) => {
-    const divs = card.querySelectorAll('div');
+    const divs = card.querySelectorAll("div");
     const headline = safeText(divs.item(1));
     const details = safeText(divs.item(2));
     const navigate = safeText(divs.item(3));
-    const mediaHTML = card.querySelector('picture')?.innerHTML ?? '';
+    const mediaHTML = card.querySelector("picture")?.innerHTML ?? "";
 
-    if (headline === '') {
-      console.log('advantage card must have a headline');
+    if (headline === "") {
+      console.log("advantage card must have a headline");
       return;
     }
 
@@ -74,39 +75,24 @@ export default async function decorate(block) {
           </div>`);
 
     if (isAuthorEnvironment()) {
-      transferInstrumentation(findFirstDataElement(card), mockup);
+      transferInstrumentation(card, mockup);
     }
     cardNodes.push(mockup);
   });
 
-  mockupContainer.querySelector('.cmp-carousel__content').append(...cardNodes);
-  if (isAuthorEnvironment()) {
-    transferInstrumentation(findFirstDataElement(block), mockupContainer);
-  }
-  block.replaceWith(mockupContainer);
+  mockupContainer.querySelector(".cmp-carousel__content").append(...cardNodes);
+  
+  block.innerHTML = "";
+  block.append(mockupContainer);
 
   // trigger block
-  // await import('./uifrontend_carousel.js');
-  await import('./uifrontend_advantage-card.js');
+  await import("../../scripts/carousel.js");
+  await import("./uifrontend_advantage-card.js");
 
-  document.dispatchEvent(new Event('eds-DOMContentLoaded'));
+  if (window.initializeSwiperOnAEMCarousel) {
+    window.initializeSwiperOnAEMCarousel(
+      mockupContainer.querySelector(".cmp-container")
+    );
+  }
 }
 
-
-function findFirstDataElement(element) {
-  if (
-    Array.from(element.attributes).some((attr) => attr.name.startsWith("data-"))
-  ) {
-    return element;
-  }
-  for (const child of element.children) {
-    if (
-      Array.from(child.attributes).some((attr) => attr.name.startsWith("data-"))
-    ) {
-      return child;
-    } else {
-      return findFirstDataElement(child);
-    }
-  }
-  return null;
-}

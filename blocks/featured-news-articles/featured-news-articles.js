@@ -30,11 +30,11 @@ export default async function decorate(block) {
         </div>
         <div class="section-actions-container">
           <a class="section-actions-btn btn btn-link" href="${
-            divs[2].textContent.trim() || "See all News Articles"
+            divs[2].textContent.trim()
           }" target="${
     divs[3].textContent?.trim().toLowerCase() === "true" ? "_blank" : "_self"
   }">
-            ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
+            ${divs[1]?.textContent?.trim()|| "See all News Articles"}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
         </div>`);
 
