@@ -109,7 +109,7 @@ export default async function decorate(block) {
   }
 
   block.innerHTML= '';
-  block.append(div);
+  block.append(mockupContainer);
 
   await import("../../scripts/carousel.js");
 
