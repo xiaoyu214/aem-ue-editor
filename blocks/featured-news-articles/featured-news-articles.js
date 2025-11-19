@@ -31,7 +31,7 @@ export default async function decorate(block) {
             ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
         </div>`);
-  debugger;
+
   const cardNodes = [];
   for (let i = 4; i < divs.length; i++) {
     const subDivs = divs[i].children;
@@ -98,5 +98,8 @@ export default async function decorate(block) {
 
   block.replaceWith(mockupContainer);
 
-  document.dispatchEvent(new Event('eds-DOMContentLoaded'));
+  console.log(window.initializeSwiperOnAEMCarousel,11111)
+  if (window.initializeSwiperOnAEMCarousel) {
+    window.initializeSwiperOnAEMCarousel(mockupContainer);
+  }
 }

@@ -413,7 +413,6 @@ function initializeSwiper(carouselElement, config) {
  * Main decoration function
  */
 export default function decorate(block) {
-  debugger
   const config = parseCarouselConfig(block);
   
   if (config.slides.length === 0) {

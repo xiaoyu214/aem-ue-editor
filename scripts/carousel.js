@@ -520,17 +520,17 @@ window.initializeSwiperOnAEMCarousel = (carousel) => {
   return swiperInstance;
 };
 
-document.addEventListener('eds-carousel-DOMContentLoaded', () => {
-  // Initialize all carousels
-  document.querySelectorAll(CAROUSEL_SELECTOR).forEach(initializeSwiperOnAEMCarousel);
-  // Activate gradient animation
-  // Added here as we need to delay until the user has interacted with page
-  const gradientAnimation = document.querySelectorAll('.gradient-animation');
-  if (gradientAnimation) {
-    waitForFirstUserInteraction().then(() => {
-      gradientAnimation.forEach((animation) => {
-        animation.classList.add('gradient-animation--active');
-      });
-    });
-  }
-});
+// document.addEventListener('eds-carousel-DOMContentLoaded', () => {
+//   // Initialize all carousels
+//   document.querySelectorAll(CAROUSEL_SELECTOR).forEach(initializeSwiperOnAEMCarousel);
+//   // Activate gradient animation
+//   // Added here as we need to delay until the user has interacted with page
+//   const gradientAnimation = document.querySelectorAll('.gradient-animation');
+//   if (gradientAnimation) {
+//     waitForFirstUserInteraction().then(() => {
+//       gradientAnimation.forEach((animation) => {
+//         animation.classList.add('gradient-animation--active');
+//       });
+//     });
+//   }
+// });
