@@ -2,8 +2,10 @@ import {
   transferInstrumentation,
   isAuthorEnvironment,
 } from "../../scripts/utils.js";
+const itemsStartIndex = 5;
 export default async function decorate(block) {
   const divs = block.children;
+  const itemCount = Number(divs[4].textContent.trim()) || 7;
   const mockupContainer = document.createRange().createContextualFragment(`
         <div class="cmp-container container">
           <div class="carousel panelcontainer">
@@ -29,17 +31,18 @@ export default async function decorate(block) {
           </div>
         </div>
         <div class="section-actions-container">
-          <a class="section-actions-btn btn btn-link" href="${
-            divs[2].textContent.trim()
-          }" target="${
+          <a class="section-actions-btn btn btn-link" href="${divs[2].textContent.trim()}" target="${
     divs[3].textContent?.trim().toLowerCase() === "true" ? "_blank" : "_self"
   }">
-            ${divs[1]?.textContent?.trim()|| "See all News Articles"}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
+            ${
+              divs[1]?.textContent?.trim() || "See all News Articles"
+            }<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
             </a>
         </div>`);
 
   const cardNodes = [];
-  for (let i = 4; i < divs.length; i++) {
+  for (let i = itemsStartIndex; i < divs.length; i++) {
+    if (i > itemCount - 1) return;
     const subDivs = divs[i].children;
     const title = subDivs[0].textContent?.trim() || "";
     const summary = subDivs[1].textContent?.trim() || "";
@@ -61,9 +64,11 @@ export default async function decorate(block) {
 
           <div class="cmp-article-card__content">
             <p class="cmp-article-card__date">
-              <time datetime="${postedDate ?postedDate.replaceAll('/','-'):'' }" aria-label="Date">
+              <time datetime="${
+                postedDate ? postedDate.replaceAll("/", "-") : ""
+              }" aria-label="Date">
                 <span aria-hidden="true">
-                  ${postedDate?transferDate(postedDate):''}
+                  ${postedDate ? transferDate(postedDate) : ""}
                 </span>
               </time>
             </p>
