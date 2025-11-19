@@ -2,7 +2,6 @@ import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 import { transferInstrumentation } from "../../scripts/utils.js";
 
 export default async function decorate(block) {
-  debugger
   const mockupContainer = document.createRange()
     .createContextualFragment(`<div class='container'>
     <div class="carousel panelcontainer">
@@ -91,7 +90,7 @@ export default async function decorate(block) {
 
   if (window.initializeSwiperOnAEMCarousel) {
     window.initializeSwiperOnAEMCarousel(
-      block.querySelector(".cmp-container")
+      block.querySelector(".container")
     );
   }
 }
