@@ -1,6 +1,11 @@
-import { transferInstrumentation } from "../../scripts/utils.js";
-import { isAuthorEnvironment } from "../../scripts/utils.js";
+import { transferInstrumentation,isAuthorEnvironment } from "../../scripts/utils.js";
+import {getBlockConfigs} from "../../scripts/configs.js";
+const DEFAULT_CONFIG = {
+  
+}
 export default async function decorate(block) {
+  const config = await getBlockConfigs(block, DEFAULT_CONFIG, 'featured-news-articles');
+  debugger
   const divs = block.children;
   const mockupContainer = document.createRange().createContextualFragment(`
         <div class="cmp-container container">
