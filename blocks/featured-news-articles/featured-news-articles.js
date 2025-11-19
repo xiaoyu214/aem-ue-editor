@@ -4,7 +4,7 @@ import {
 } from "../../scripts/utils.js";
 const itemsStartIndex = 5;
 export default async function decorate(block) {
-  debugger
+  debugger;
   const divs = block.children;
   const itemCount = Number(divs[4].textContent.trim()) || 7;
   const mockupContainer = document.createRange().createContextualFragment(`
@@ -45,14 +45,17 @@ export default async function decorate(block) {
   for (let i = itemsStartIndex; i < divs.length; i++) {
     if (i > itemCount - 1) return;
     const subDivs = divs[i].children;
-    const title = subDivs[0].textContent?.trim() || "";
-    const summary = subDivs[1].textContent?.trim() || "";
-    const image = subDivs[2].querySelector("img")?.getAttribute("src") || "";
-    const imageAlt = subDivs[3].textContent?.trim() || "";
-    const postedDate = subDivs[4].textContent?.trim();
-    const articleLink = subDivs[5].textContent?.trim();
-    const articleOpenInNewTab =
-      subDivs[6].textContent?.trim().toLowerCase() === "true";
+    const title = subDivs[0] ? subDivs[0].textContent?.trim() : "";
+    const summary = subDivs[1] ? subDivs[1].textContent?.trim() : "";
+    const image = subDivs[2]
+      ? subDivs[2].querySelector("img")?.getAttribute("src")
+      : "";
+    const imageAlt = subDivs[3] ? subDivs[3].textContent?.trim() : "";
+    const postedDate = subDivs[4] ? subDivs[4].textContent?.trim() : "";
+    const articleLink = subDivs[5] ? subDivs[5].textContent?.trim() : "";
+    const articleOpenInNewTab = subDivs[6]
+      ? subDivs[6].textContent?.trim().toLowerCase() === "true"
+      : false;
 
     const mockup = document.createRange().createContextualFragment(`
       <div class="cmp-carousel__item">
