@@ -1,19 +1,6 @@
 import { transferInstrumentation } from "../../scripts/utils.js";
 import { isAuthorEnvironment } from "../../scripts/utils.js";
 export default async function decorate(block) {
-  debugger
-  // const divs = block.children;
-  // const div = document.createElement("h2");
-  // div.innerHTML = divs[0].textContent.trim();
-  // div.className = "section-heading__title";
-  
-  // if (divs[0]) {
-  //   transferInstrumentation(divs[0], div);
-  // }
-  // block.innerHTML= '';
-  // block.append(div);
-
-
   const divs = block.children;
   const mockupContainer = document.createRange().createContextualFragment(`
         <div class="cmp-container container">
@@ -114,6 +101,6 @@ export default async function decorate(block) {
   await import("../../scripts/carousel.js");
 
   if (window.initializeSwiperOnAEMCarousel) {
-    window.initializeSwiperOnAEMCarousel(mockupContainer.querySelector('.cmp-container'));
+    window.initializeSwiperOnAEMCarousel(block.querySelector('.cmp-container'));
   }
 }
