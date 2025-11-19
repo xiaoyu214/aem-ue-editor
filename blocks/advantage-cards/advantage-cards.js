@@ -6,7 +6,7 @@ export default async function decorate(block) {
   const divs = block.children;
   const title = divs[0].textContent.trim() || "Our Advantages";
   const itemCount = Number(divs[1].textContent.trim()) || 3;
-  const imageAutoplayDuration = divs[2].textContent.trim() || 5;
+  const imageAutoplayDuration = Number(divs[2].textContent.trim()) || 5;
   const mockupContainer = document.createRange()
     .createContextualFragment(`<div class='container'>
     <div class="carousel panelcontainer">
@@ -19,7 +19,7 @@ export default async function decorate(block) {
         aria-live="polite"
         aria-roledescription="carousel"
         data-cmp-is="carousel"
-        data-cmp-delay="${imageAutoplayDuration}"
+        data-cmp-delay="${imageAutoplayDuration*1000}"
         data-carousel-effect="creative"
       >
         <div class="cmp-carousel__content">
