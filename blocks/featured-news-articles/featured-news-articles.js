@@ -2,7 +2,6 @@ import { transferInstrumentation } from "../../scripts/utils.js";
 import { isAuthorEnvironment } from "../../scripts/utils.js";
 export default async function decorate(block) {
   const divs = block.children;
-  debugger
   const div = document.createElement("h2");
   div.innerHTML = divs[0].textContent.trim();
   div.className = "section-heading__title";
@@ -10,7 +9,7 @@ export default async function decorate(block) {
   if (divs[0]) {
     transferInstrumentation(divs[0], div);
   }
-  block.replaceWith = div;
+  block.replaceWith(div);
   // const divs = block.children;
   // const mockupContainer = document.createRange().createContextualFragment(`
   //       <div class="cmp-container container">
