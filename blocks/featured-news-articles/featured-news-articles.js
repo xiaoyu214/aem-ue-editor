@@ -49,9 +49,7 @@ export default async function decorate(block) {
         <a class="cmp-article-card" href="${articleLink}" aria-label="${title}" target="${
       articleOpenInNewTab ? "_blank" : "_self"
     }">
-          <div class="cmp-article-card__image cmp-image">
-            <img class="cmp-image__image" src="${image}" alt="${imageAlt}" loading="lazy">
-          </div>
+         
 
           <div class="cmp-article-card__content">
             <p class="cmp-article-card__date">
