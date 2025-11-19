@@ -1,6 +1,7 @@
 import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 import { transferInstrumentation } from "../../scripts/utils.js";
 
+const itemsStartIndex = 3;
 export default async function decorate(block) {
   debugger;
   const divs = block.children;
@@ -43,7 +44,7 @@ export default async function decorate(block) {
 
   const cardNodes = [];
   [...block.children].forEach((card, i) => {
-    if (i > itemCount - 1 || i < 3) return;
+    if (i > itemsStartIndex + itemCount - 1 || i < itemsStartIndex) return;
     const divs = card.querySelectorAll("div");
     const headline = safeText(divs.item(1));
     const details = safeText(divs.item(2));
