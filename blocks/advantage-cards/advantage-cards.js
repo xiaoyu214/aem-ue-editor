@@ -84,7 +84,7 @@ export default async function decorate(block) {
     //move attr
   if (isAuthorEnvironment()) {
     //move title
-    if (divs[0]) {
+    if (block.firstElementChild) {
       transferInstrumentation(
         block.firstElementChild,
         mockupContainer.querySelector(".section-heading")
