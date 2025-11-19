@@ -74,22 +74,19 @@ export default async function decorate(block) {
           </div>`);
 
     if (isAuthorEnvironment()) {
-      transferInstrumentation(findFirstDataElement(card), mockup);
+      transferInstrumentation(card, mockup);
     }
     cardNodes.push(mockup);
   });
 
   mockupContainer.querySelector(".cmp-carousel__content").append(...cardNodes);
-  if (isAuthorEnvironment()) {
-    transferInstrumentation(findFirstDataElement(block), mockupContainer);
-  }
-  block.replaceWith(mockupContainer);
+  
+  block.innerHTML = "";
+  block.append(mockupContainer);
 
   // trigger block
   await import("../../scripts/carousel.js");
   await import("./uifrontend_advantage-card.js");
-
-  document.dispatchEvent(new Event("eds-DOMContentLoaded"));
 
   if (window.initializeSwiperOnAEMCarousel) {
     window.initializeSwiperOnAEMCarousel(
@@ -98,20 +95,3 @@ export default async function decorate(block) {
   }
 }
 
-function findFirstDataElement(element) {
-  if (
-    Array.from(element.attributes).some((attr) => attr.name.startsWith("data-"))
-  ) {
-    return element;
-  }
-  for (const child of element.children) {
-    if (
-      Array.from(child.attributes).some((attr) => attr.name.startsWith("data-"))
-    ) {
-      return child;
-    } else {
-      return findFirstDataElement(child);
-    }
-  }
-  return null;
-}
