@@ -80,6 +80,17 @@ export default async function decorate(block) {
   });
 
   mockupContainer.querySelector(".cmp-carousel__content").append(...cardNodes);
+
+    //move attr
+  if (isAuthorEnvironment()) {
+    //move title
+    if (divs[0]) {
+      transferInstrumentation(
+        block.firstElementChild,
+        mockupContainer.querySelector(".section-heading")
+      );
+    }
+  }
   
   block.innerHTML = "";
   block.append(mockupContainer);
