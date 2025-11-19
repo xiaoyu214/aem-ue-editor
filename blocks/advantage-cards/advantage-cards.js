@@ -2,11 +2,16 @@ import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 import { transferInstrumentation } from "../../scripts/utils.js";
 
 export default async function decorate(block) {
+  debugger
+  const divs = block.children;
+  const title = divs[0].textContent.trim() || 'Our Advantages';
+  const itemCount = Number(divs[1].textContent.trim()) || 3;
+  const imageAutoplayDuration = divs[2].textContent.trim() || 5;
   const mockupContainer = document.createRange()
     .createContextualFragment(`<div class='container'>
     <div class="carousel panelcontainer">
       <div class="section-heading content-center">
-        <h2>${block.firstElementChild.textContent.trim() || 'Our Advantages'}</h2>
+        <h2>${title}</h2>
       </div>
       <div
         class="cmp-carousel"
@@ -14,7 +19,7 @@ export default async function decorate(block) {
         aria-live="polite"
         aria-roledescription="carousel"
         data-cmp-is="carousel"
-        data-cmp-delay="5000"
+        data-cmp-delay="${imageAutoplayDuration}"
         data-carousel-effect="creative"
       >
         <div class="cmp-carousel__content">
@@ -37,7 +42,8 @@ export default async function decorate(block) {
   </div>`);
 
   const cardNodes = [];
-  [...block.children].forEach((card) => {
+  [...block.children].forEach((card,i) => {
+    if(i>itemCount-1)return;
     const divs = card.querySelectorAll("div");
     const headline = safeText(divs.item(1));
     const details = safeText(divs.item(2));
