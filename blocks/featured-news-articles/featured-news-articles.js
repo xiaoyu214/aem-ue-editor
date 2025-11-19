@@ -1,18 +1,17 @@
-import { transferInstrumentation,isAuthorEnvironment } from "../../scripts/utils.js";
-import {getBlockConfigs} from "../../scripts/configs.js";
-const DEFAULT_CONFIG = {
-  
-}
+import {
+  transferInstrumentation,
+  isAuthorEnvironment,
+} from "../../scripts/utils.js";
 export default async function decorate(block) {
-  const config = await getBlockConfigs(block, DEFAULT_CONFIG, 'featured-news-articles');
-  debugger
   const divs = block.children;
   const mockupContainer = document.createRange().createContextualFragment(`
         <div class="cmp-container container">
           <div class="carousel panelcontainer">
             <div class="section-heading">
               <div class="section-heading__text-group">
-                <h2 class="section-heading__title">${divs[0].textContent.trim()}</h2>
+                <h2 class="section-heading__title">${
+                  divs[0].textContent.trim() || "Featured News Articles"
+                }</h2>
               </div>
               <div class="section-heading__action-buttons cmp-carousel__actions">
                 <button class="cmp-carousel__action cmp-carousel__action--previous">
@@ -30,7 +29,9 @@ export default async function decorate(block) {
           </div>
         </div>
         <div class="section-actions-container">
-          <a class="section-actions-btn btn btn-link" href="${divs[2].textContent.trim()}" target="${
+          <a class="section-actions-btn btn btn-link" href="${
+            divs[2].textContent.trim() || "See all News Articles"
+          }" target="${
     divs[3].textContent?.trim().toLowerCase() === "true" ? "_blank" : "_self"
   }">
             ${divs[1]?.textContent?.trim()}<img src="/content/dam/eds-enablement-xwalk/asus-cto-sites/icon-arrow.svg" alt="Arrow Right">
@@ -62,7 +63,7 @@ export default async function decorate(block) {
             <p class="cmp-article-card__date">
               <time datetime="${postedDate}" aria-label="Date">
                 <span aria-hidden="true">
-                  ${postedDate}
+                  ${postedDate?transferDate(postedDate):''}
                 </span>
               </time>
             </p>
@@ -73,7 +74,7 @@ export default async function decorate(block) {
       </div>
     `);
 
-    //move card attr
+    //move card box attr
     if (isAuthorEnvironment()) {
       transferInstrumentation(divs[i], mockup);
     }
@@ -85,13 +86,14 @@ export default async function decorate(block) {
 
   //move attr
   if (isAuthorEnvironment()) {
-
+    //move title
     if (divs[0]) {
       transferInstrumentation(
         divs[0],
         mockupContainer.querySelector(".section-heading__title")
       );
     }
+    //move description
     if (divs[1]) {
       transferInstrumentation(
         divs[1],
@@ -100,12 +102,23 @@ export default async function decorate(block) {
     }
   }
 
-  block.innerHTML= '';
+  block.innerHTML = "";
   block.append(mockupContainer);
 
   await import("../../scripts/carousel.js");
 
   if (window.initializeSwiperOnAEMCarousel) {
-    window.initializeSwiperOnAEMCarousel(block.querySelector('.cmp-container'));
+    window.initializeSwiperOnAEMCarousel(block.querySelector(".cmp-container"));
   }
+}
+
+//transfer date format
+function transferDate(dateStr) {
+  const date = new Date(dateStr);
+  const formattedDate = date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+  return formattedDate;
 }
