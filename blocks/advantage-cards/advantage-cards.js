@@ -2,9 +2,9 @@ import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 import { transferInstrumentation } from "../../scripts/utils.js";
 
 export default async function decorate(block) {
-  debugger
+  debugger;
   const divs = block.children;
-  const title = divs[0].textContent.trim() || 'Our Advantages';
+  const title = divs[0].textContent.trim() || "Our Advantages";
   const itemCount = Number(divs[1].textContent.trim()) || 3;
   const imageAutoplayDuration = divs[2].textContent.trim() || 5;
   const mockupContainer = document.createRange()
@@ -42,8 +42,8 @@ export default async function decorate(block) {
   </div>`);
 
   const cardNodes = [];
-  [...block.children].forEach((card,i) => {
-    if(i>itemCount-1)return;
+  [...block.children].forEach((card, i) => {
+    if (i > itemCount - 1 || i < 3) return;
     const divs = card.querySelectorAll("div");
     const headline = safeText(divs.item(1));
     const details = safeText(divs.item(2));
@@ -87,7 +87,7 @@ export default async function decorate(block) {
 
   mockupContainer.querySelector(".cmp-carousel__content").append(...cardNodes);
 
-    //move attr
+  //move attr
   if (isAuthorEnvironment()) {
     //move title
     if (block.firstElementChild) {
@@ -97,7 +97,7 @@ export default async function decorate(block) {
       );
     }
   }
-  
+
   block.innerHTML = "";
   block.append(mockupContainer);
 
@@ -106,9 +106,6 @@ export default async function decorate(block) {
   await import("./uifrontend_advantage-card.js");
 
   if (window.initializeSwiperOnAEMCarousel) {
-    window.initializeSwiperOnAEMCarousel(
-      block.querySelector(".container")
-    );
+    window.initializeSwiperOnAEMCarousel(block.querySelector(".container"));
   }
 }
-
