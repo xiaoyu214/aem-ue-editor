@@ -42,7 +42,7 @@ export default async function decorate(block) {
         </div>`);
 
   const cardNodes = [];
-  for (let i = itemsStartIndex - 1; i < divs.length; i++) {
+  for (let i = itemsStartIndex; i < divs.length; i++) {
     if (i > itemCount - 1) return;
     const subDivs = divs[i].children;
     const title = subDivs[0].textContent?.trim() || "";
