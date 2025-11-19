@@ -61,7 +61,7 @@ export default async function decorate(block) {
 
           <div class="cmp-article-card__content">
             <p class="cmp-article-card__date">
-              <time datetime="${postedDate}" aria-label="Date">
+              <time datetime="${postedDate ?postedDate.replaceAll('/','-'):'' }" aria-label="Date">
                 <span aria-hidden="true">
                   ${postedDate?transferDate(postedDate):''}
                 </span>
