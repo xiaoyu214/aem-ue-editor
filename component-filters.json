@@ -20,7 +20,8 @@
       "featured-news-articles",
       "advantage-cards",
       "help-me-choose",
-      "carousel"
+      "carousel",
+      "our-advantages"
     ]
   },
   {
@@ -61,5 +62,11 @@
     "components": [
       "advantage-card"
     ]
-  }
+  },
+  {
+      "id": "our-advantages",
+      "components": [
+        "our-advantage"
+      ]
+    }
 ]
