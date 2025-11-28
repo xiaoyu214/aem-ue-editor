@@ -21,11 +21,12 @@ export default async function decorate(block) {
         data-cmp-is="carousel"
         data-cmp-delay="${imageAutoplayDuration*1000}"
         data-carousel-effect="creative"
+        data-prev-slide-message="Previous advantage" 
+        data-next-slide-message="Next advantage"
       >
         <div class="cmp-carousel__content">
         </div>
 
-        <!-- Carousel actions - Previous/Next -->
         <div class="cmp-carousel__actions">
           <button class="cmp-carousel__action cmp-carousel__action--previous" type="button" aria-label="Previous">
             <span class="visually-hidden"></span>
@@ -35,7 +36,6 @@ export default async function decorate(block) {
           </button>
         </div>
 
-        <!-- Pagination indicatoors -->
         <ol class="cmp-carousel__indicators" role="tablist" aria-label="Choose a slide to display"></ol>
       </div>
     </div>
