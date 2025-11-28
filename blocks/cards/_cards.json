@@ -35,42 +35,7 @@
     {
       "id": "card",
       "fields": [
-        {
-          "component": "reference",
-          "valueType": "string",
-          "name": "image",
-          "label": "Image",
-          "multi": false
-        },
-        {
-          "component": "richtext",
-          "name": "text",
-          "value": "",
-          "label": "Text",
-          "valueType": "string"
-        },
-        {
-          "component": "container",
-          "label": "Container",
-          "name": "container",
-          "valueType": "string",
-          "collapsible": true,
-          "fields": [
-            {
-              "component": "text-input",
-              "label": "Simple Text 1",
-              "name": "text",
-              "valueType": "string"
-            },
-            {
-              "component": "text-input",
-              "label": "Simple Text 2",
-              "name": "text2",
-              "valueType": "string"
-            }
-          ]
-        },
-        {
+    {
       "component": "tab",
       "label": "Tab 1",
       "name": "tab1"
@@ -92,7 +57,7 @@
       "name": "text2",
       "valueType": "string"
     }
-      ]
+  ]
     }
   ],
   "filters": [
