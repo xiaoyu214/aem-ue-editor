@@ -158,10 +158,7 @@
         "label": "Text",
         "valueType": "string"
       },
-       {
-          "id": "container",
-          "fields": [
-            {
+      {
               "component": "container",
               "label": "Container",
               "name": "container",
@@ -182,8 +179,6 @@
                 }
               ]
             }
-          ]
-        }
     ]
   },
   {
