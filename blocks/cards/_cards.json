@@ -35,43 +35,50 @@
     {
       "id": "card",
       "fields": [
-      {
-          "component": "reference",
-          "valueType": "string",
-          "name": "image",
-          "label": "Image",
-          "multi": false
+        {
+        "component": "container",
+        "label": "Container",
+        "name": "container",
+        "valueType": "string",
+        "collapsible": true,
+        "fields": [
+          {
+            "component": "text-input",
+            "label": "Simple Text 1",
+            "name": "text",
+            "valueType": "string"
+          },
+          {
+            "component": "text-input",
+            "label": "Simple Text 2",
+            "name": "text2",
+            "valueType": "string"
+          }
+        ]
+      },
+        {
+          "component": "tab",
+          "label": "Tab 1",
+          "name": "tab1"
         },
         {
-          "component": "richtext",
-          "name": "text",
-          "value": "",
-          "label": "Text",
+          "component": "text-input",
+          "label": "Text 1",
+          "name": "text1",
           "valueType": "string"
         },
-      {
-        "component": "tab",
-        "label": "Tab 1",
-        "name": "tab1"
-      },
-      {
-        "component": "text-input",
-        "label": "Text 1",
-        "name": "text1",
-        "valueType": "string"
-      },
-      {
-        "component": "tab",
-        "label": "Tab 2",
-        "name": "tab2"
-      },
-      {
-        "component": "text-input",
-        "label": "Text 2",
-        "name": "text2",
-        "valueType": "string"
-      }
-    ]
+        {
+          "component": "tab",
+          "label": "Tab 2",
+          "name": "tab2"
+        },
+        {
+          "component": "text-input",
+          "label": "Text 2",
+          "name": "text2",
+          "valueType": "string"
+        }
+      ]
     }
   ],
   "filters": [
