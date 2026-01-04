@@ -1,6 +1,6 @@
 {
   "mappings": [
-    "/content/aem-ue-editor/:/us/",
+    "/content/aem-ue-editor/language-master/en/:/us/",
     "/us/:/",
     "/content/aem-ue-editor/configuration:/.helix/config.json",
     "/content/aem-ue-editor/metadata:/metadata.json"
