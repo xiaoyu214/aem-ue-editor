@@ -6,6 +6,6 @@
     "/content/aem-ue-editor/metadata:/metadata.json"
   ],
   "includes": [
-    "/content/aem-ue-editor/"
+     "/content/asus-cto/language-master/"
   ]
 }
