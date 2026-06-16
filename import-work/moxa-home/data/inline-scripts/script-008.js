@@ -1,0 +1,3 @@
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('manScript', 'KenticoForm', ['tp$lt$ctl06$MoxaGenericContainer$MoxaGenericContainer_zone$MoxaNewsletterSubscriptionWidget$upPanel','','tp$lt$ctl06$MoxaGenericContainer$MoxaGenericContainer_zone$MoxaNewsletterSubscriptionWidget$updpnlThankyouModal','','tp$lt$ctl08$MoxaProductCompare2$pnlCompare','','tp$lt$ctl08$MoxaFeedbackForm$updPnl','','tctxM',''], [], [], 90, '');
+//]]>

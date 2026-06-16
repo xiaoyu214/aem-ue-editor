@@ -1,0 +1,3 @@
+//<![CDATA[
+function GetUtmValue_p_lt_ctl08_MoxaFeedbackForm(){document.getElementById('p_lt_ctl08_MoxaFeedbackForm_hidGAClientID').value = window.formkey;document.getElementById('p_lt_ctl08_MoxaFeedbackForm_hidUtmCampaign').value = localStorage.getItem('session_campaign');document.getElementById('p_lt_ctl08_MoxaFeedbackForm_hidUtmMedium').value = localStorage.getItem('session_medium');document.getElementById('p_lt_ctl08_MoxaFeedbackForm_hidUtmSource').value = localStorage.getItem('session_source');document.getElementById('p_lt_ctl08_MoxaFeedbackForm_hidUtmContent').value = localStorage.getItem('session_content');document.getElementById('p_lt_ctl08_MoxaFeedbackForm_hidUtmTerm').value = localStorage.getItem('session_term');}
+//]]>

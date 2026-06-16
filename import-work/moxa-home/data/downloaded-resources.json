@@ -1,0 +1,386 @@
+[
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/css/moxa/cwv/templates/homepage-min.css?v=20.5",
+    "localPath": "assets/css/homepage-min-75ffe3fc4f.css",
+    "contentType": "text/css",
+    "bytes": 189162
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/css/moxa/style-min.css?v=20.5",
+    "localPath": "assets/css/style-min-3f918a7a52.css",
+    "contentType": "text/css",
+    "bytes": 804760
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/css/moxa/cwv/layout/footer-min.css?v=20.5",
+    "localPath": "assets/css/footer-min-beb6c45c5c.css",
+    "contentType": "text/css",
+    "bytes": 84475
+  },
+  {
+    "url": "https://www.googletagmanager.com/gtag/destination?id=AW-10530538&cx=c&gtm=4e66c1",
+    "localPath": "assets/js/destination-ad841944a0.js",
+    "contentType": "application/javascript; charset=UTF-8",
+    "bytes": 389129
+  },
+  {
+    "url": "https://www.googletagmanager.com/gtag/destination?id=AW-833727216&cx=c&gtm=4e66c1",
+    "localPath": "assets/js/destination-9c51f24e3d.js",
+    "contentType": "application/javascript; charset=UTF-8",
+    "bytes": 403118
+  },
+  {
+    "url": "https://www.googletagmanager.com/gtag/js?id=G-VG755C9FVF&cx=c&gtm=4e66c1",
+    "localPath": "assets/js/js-9bb6a09937.js",
+    "contentType": "application/javascript; charset=UTF-8",
+    "bytes": 554392
+  },
+  {
+    "url": "https://www.googletagmanager.com/gtm.js?id=GTM-PV2WQQ6",
+    "localPath": "assets/js/gtm-d8a444ec98.js",
+    "contentType": "application/javascript; charset=UTF-8",
+    "bytes": 600353
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/notice/yuyxxf",
+    "localPath": "assets/js/yuyxxf-cc211e2629.js",
+    "contentType": "text/javascript;charset=iso-8859-1",
+    "bytes": 50
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/autoblockasset/core.min.js?cmId=yuyxxf",
+    "localPath": "assets/js/core.min-16f9801953.js",
+    "contentType": "application/javascript",
+    "bytes": 21265
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/autoblock?cmId=yuyxxf",
+    "localPath": "assets/js/autoblock-8b8d17d7af.js",
+    "contentType": "text/javascript;charset=iso-8859-1",
+    "bytes": 38
+  },
+  {
+    "url": "https://www.moxa.com/ScriptResource.axd?d=nv7asgRUU0tRmHNR2D6t1DAN616jRdTLekb9ntNQrcdh23K0qVhy_2z9jHFy_tW4MUMYh9Dx9DMf5H6np8oVNube4jyG77vOpt51PQT3EJrfT0HTjJGZt0ucy4ucUlSsqSV9OEz6xp7GqnV1uSfXrg2&t=ffffffff93d1c106",
+    "localPath": "assets/js/ScriptResource-11ff6bd029.axd",
+    "contentType": "application/x-javascript",
+    "bytes": 26954
+  },
+  {
+    "url": "https://www.moxa.com/CMSPages/GetResource.ashx?scriptfile=%7e%2fCMSScripts%2fWebServiceCall.js",
+    "localPath": "assets/js/GetResource-cd04ddd090.ashx",
+    "contentType": "application/x-javascript",
+    "bytes": 326
+  },
+  {
+    "url": "https://www.moxa.com/ScriptResource.axd?d=NJmAwtEo3Ipnlaxl6CMhvuuHI5H7Cvt3kd7nKVi5Uy2UD1q89TXn81g2C2pSsPKamZb_jqlqkkqmELqI510hEYqqIfJVeJmes9VEGA9hMi0ju9WpptV1zW4tLeSQoqJbUBt1pkDcGBlPJ3Yx2Qr2Oae7c1rIOTdUClxbSdaaqWw1&t=5c0e0825",
+    "localPath": "assets/js/ScriptResource-932258452d.axd",
+    "contentType": "application/x-javascript",
+    "bytes": 102804
+  },
+  {
+    "url": "https://www.moxa.com/ScriptResource.axd?d=dwY9oWetJoJoVpgL6Zq8OH1oHF81c6RRedtFM9jqGWEznlFBEajSeJZ6Lu_Lq1MUbd8NOA8UAsqKM9LhOW2_0xkGCMfx6Vunwc8Vn2Y4lil5j4flLaWuhtOEahX4okqbE1G84MusHZx5RfaJCSXFHmlkbvFvzYTx_Y_-KHdGmc41&t=5c0e0825",
+    "localPath": "assets/js/ScriptResource-0e52487ee6.axd",
+    "contentType": "application/x-javascript",
+    "bytes": 40329
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/CMSScripts/Custom/Moxa/cwv/layout/atf_masterLayout.compile-min.js?v=20.5",
+    "localPath": "assets/js/atf_masterLayout.compile-min-29ba985ddb.js",
+    "contentType": "application/javascript",
+    "bytes": 1196177
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/CMSScripts/Custom/Moxa/cwv/templates/atf_homepageTemplate.compile-min.js?v=20.5",
+    "localPath": "assets/js/atf_homepageTemplate.compile-min-155a755c30.js",
+    "contentType": "application/javascript",
+    "bytes": 411070
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/CMSScripts/Custom/Moxa/cwv/layout/footerLayout.compile-min.js?v=20.5",
+    "localPath": "assets/js/footerLayout.compile-min-eac36a3cfb.js",
+    "contentType": "application/javascript",
+    "bytes": 34251
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/CMSScripts/Custom/Moxa/cwv/templates/pageTemplateFunctions.compile-min.js?v=20.5",
+    "localPath": "assets/js/pageTemplateFunctions.compile-min-1504d859f3.js",
+    "contentType": "application/javascript",
+    "bytes": 693801
+  },
+  {
+    "url": "https://www.moxa.com/CMSScripts/Custom/Moxa/quotation.js?v=no-cache-10:10:01.1698602",
+    "localPath": "assets/js/quotation-6588efb679.js",
+    "contentType": "application/javascript",
+    "bytes": 1216
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/CMSScripts/Custom/Moxa/cwv/templates/homepageTemplate.compile-min.js?v=20.5",
+    "localPath": "assets/js/homepageTemplate.compile-min-cdcea4ec28.js",
+    "contentType": "application/javascript",
+    "bytes": 1291891
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Global/logo.svg?ext=.svg",
+    "localPath": "assets/images/logo-be3ea21d15.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 5667
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Solutions/Artboard.svg?ext=.svg",
+    "localPath": "assets/images/Artboard-ef448226e4.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 31026
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Solutions/power/icon-bess.svg?ext=.svg",
+    "localPath": "assets/images/icon-bess-3c62b17d5d.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 1383
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Global/Brand/cybersecurity.png?ext=.png",
+    "localPath": "assets/images/cybersecurity-1fce9951ec.png",
+    "contentType": "image/png",
+    "bytes": 7526
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Global/Brand/distributor.svg?ext=.svg",
+    "localPath": "assets/images/distributor-0b00d5cba2.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 7021
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Global/Brand/mail.svg?ext=.svg",
+    "localPath": "assets/images/mail-a05984adf4.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 1073
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Solutions/IIoT/green-core.svg?ext=.svg",
+    "localPath": "assets/images/green-core-31187c4b3c.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 2961
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Solutions/IIoT/target.svg?ext=.svg",
+    "localPath": "assets/images/target-34f9f4b193.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 2270
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Global/Site%20Content/Home/Featured%20products/UC-8600A-Right-Antenna-600x600.png?ext=.png",
+    "localPath": "assets/images/UC-8600A-Right-Antenna-600x600-cfccc1010c.png",
+    "contentType": "image/png",
+    "bytes": 257736
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Images/ajax-loader.gif",
+    "localPath": "assets/images/ajax-loader-071916636c.gif",
+    "contentType": "image/gif",
+    "bytes": 19110
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/ic-error.svg",
+    "localPath": "assets/images/ic-error-567521fa43.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 5514
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/ic-close-white.svg",
+    "localPath": "assets/images/ic-close-white-6cacbd3f18.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 6901
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/ic-close.svg",
+    "localPath": "assets/images/ic-close-b091d4750b.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 5806
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/trustarc-logo-xs.svg",
+    "localPath": "assets/images/trustarc-logo-xs-1e8e2dbd66.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 3191
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Global/Site%20Content/Home/Pop%20Up/Secure-Networking-Solutions-banner-380px.png?ext=.png",
+    "localPath": "assets/images/Secure-Networking-Solutions-banner-380px-401145e9ac.png",
+    "contentType": "image/png",
+    "bytes": 226836
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Global/Site%20Content/Home/Pop%20Up/Secure-Networking-Solutions-banner-250px.png?ext=.png",
+    "localPath": "assets/images/Secure-Networking-Solutions-banner-250px-7cf7e225ef.png",
+    "contentType": "image/png",
+    "bytes": 115363
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/App_Themes/Moxa/SiteMeta/favicon.ico",
+    "localPath": "assets/images/favicon-65d8196e2d.ico",
+    "contentType": "image/x-icon",
+    "bytes": 15406
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/App_Themes/Moxa/SiteMeta/apple-touch-icon.png",
+    "localPath": "assets/images/apple-touch-icon-77b8b3be39.png",
+    "contentType": "image/png",
+    "bytes": 1883
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/App_Themes/Moxa/SiteMeta/safari-pinned-tab.svg",
+    "localPath": "assets/images/safari-pinned-tab-f600283f9f.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 2030
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/App_Themes/Moxa/SiteMeta/favicon-16x16.png",
+    "localPath": "assets/images/favicon-16x16-15c125be6a.png",
+    "contentType": "image/png",
+    "bytes": 768
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/App_Themes/Moxa/SiteMeta/favicon-32x32.png",
+    "localPath": "assets/images/favicon-32x32-4e8495926f.png",
+    "contentType": "image/png",
+    "bytes": 1053
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/App_Themes/Moxa/SiteMeta/android-chrome-192x192.png",
+    "localPath": "assets/images/android-chrome-192x192-632eb37906.png",
+    "contentType": "image/png",
+    "bytes": 2157
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/App_Themes/Moxa/SiteMeta/android-chrome-512x512.png",
+    "localPath": "assets/images/android-chrome-512x512-d0c1aeb2e2.png",
+    "contentType": "image/png",
+    "bytes": 4707
+  },
+  {
+    "url": "https://www.moxa.com/css/Moxa/fonts/icon.1779936831250.eot",
+    "localPath": "assets/fonts/icon.1779936831250-94bd0a9b1b.eot",
+    "contentType": "application/vnd.ms-fontobject",
+    "bytes": 16616
+  },
+  {
+    "url": "https://www.moxa.com/css/Moxa/fonts/icon.1779936831250.eot?#iefix",
+    "localPath": "assets/fonts/icon.1779936831250-d0afe55cc4.eot",
+    "contentType": "application/vnd.ms-fontobject",
+    "bytes": 16616
+  },
+  {
+    "url": "https://www.moxa.com/css/Moxa/fonts/icon.1779936831250.ttf",
+    "localPath": "assets/fonts/icon.1779936831250-ef30b21e31.ttf",
+    "contentType": "application/x-font-ttf",
+    "bytes": 16408
+  },
+  {
+    "url": "https://www.moxa.com/css/Moxa/fonts/icon.1779936831250.woff",
+    "localPath": "assets/fonts/icon.1779936831250-2f29a2135a.woff",
+    "contentType": "application/x-font-woff",
+    "bytes": 9808
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Global/Site%20Content/Home/Top%20Banner/MGate-G2_KV_1920x550.jpg?ext=.jpg",
+    "localPath": "assets/images/MGate-G2_KV_1920x550-890d129f1d.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 1132939
+  },
+  {
+    "url": "https://www.moxa.com/Moxa/media/Global/Site%20Content/Home/Explore%20Now/Machine-OEM-553x375.jpg?ext=.jpg",
+    "localPath": "assets/images/Machine-OEM-553x375-5181ef42aa.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 74154
+  },
+  {
+    "url": "https://www.moxa.com/Moxa/media/Global/Site%20Content/Home/Explore%20Now/remote-io_553x375.jpg?ext=.jpg",
+    "localPath": "assets/images/remote-io_553x375-3a78555d3c.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 74736
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Global/Site%20Content/Home/Trending%20at%20Moxa/BTM-Microgrid-hp-image-744x744.png?ext=.png",
+    "localPath": "assets/images/BTM-Microgrid-hp-image-744x744-f5012eab3e.png",
+    "contentType": "image/png",
+    "bytes": 702290
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/KalturaVideoLibrary/Resource_OG_image/award-360x360-2026.png?ext=.png",
+    "localPath": "assets/images/award-360x360-2026-d5454a15a5.png",
+    "contentType": "image/png",
+    "bytes": 12108
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/Moxa/media/Global/Site%20Content/Home/Trending%20at%20Moxa/DCI_HP_360x360.jpg?ext=.jpg",
+    "localPath": "assets/images/DCI_HP_360x360-b072214885.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 83622
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/cyrillic-ext.woff2",
+    "localPath": "assets/fonts/cyrillic-ext-98a302f766.woff2",
+    "contentType": "application/octet-stream",
+    "bytes": 5024
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/cyrillic.woff2",
+    "localPath": "assets/fonts/cyrillic-80d4fdf55a.woff2",
+    "contentType": "application/octet-stream",
+    "bytes": 7448
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/greek-ext.woff2",
+    "localPath": "assets/fonts/greek-ext-0d3cf9294d.woff2",
+    "contentType": "application/octet-stream",
+    "bytes": 6004
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/greek.woff2",
+    "localPath": "assets/fonts/greek-c454445de7.woff2",
+    "contentType": "application/octet-stream",
+    "bytes": 7036
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/vietnamese.woff2",
+    "localPath": "assets/fonts/vietnamese-073371cf87.woff2",
+    "contentType": "application/octet-stream",
+    "bytes": 4216
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/latin-ext.woff2",
+    "localPath": "assets/fonts/latin-ext-37a609bc9f.woff2",
+    "contentType": "application/octet-stream",
+    "bytes": 11792
+  },
+  {
+    "url": "https://consent.trustarc.com/v2/asset/latin.woff2",
+    "localPath": "assets/fonts/latin-e756df2436.woff2",
+    "contentType": "application/octet-stream",
+    "bytes": 13036
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/css/Moxa/fonts/icon.1779936831250.eot",
+    "localPath": "assets/fonts/icon.1779936831250-d67d70723b.eot",
+    "contentType": "application/vnd.ms-fontobject",
+    "bytes": 16616
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/css/Moxa/fonts/icon.1779936831250.eot?#iefix",
+    "localPath": "assets/fonts/icon.1779936831250-9570ed372a.eot",
+    "contentType": "application/vnd.ms-fontobject",
+    "bytes": 16616
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/css/Moxa/fonts/icon.1779936831250.ttf",
+    "localPath": "assets/fonts/icon.1779936831250-e1c0f92187.ttf",
+    "contentType": "application/x-font-ttf",
+    "bytes": 16408
+  },
+  {
+    "url": "https://cdn-cms-frontdoor-dfc8ebanh6bkb3hs.a02.azurefd.net/css/Moxa/fonts/icon.1779936831250.woff",
+    "localPath": "assets/fonts/icon.1779936831250-e9a6a6aa4c.woff",
+    "contentType": "application/x-font-woff",
+    "bytes": 9808
+  }
+]

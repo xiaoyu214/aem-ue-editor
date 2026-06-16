@@ -1,0 +1,1 @@
+function calc(){document.getElementById("00N200000016TK6").checked?(document.getElementById("00N200000016TKL").value=1,document.getElementById("00N200000016TKL").checked=!0):(document.getElementById("00N200000016TKL").value=0,document.getElementById("00N200000016TKL").checked=!1)};

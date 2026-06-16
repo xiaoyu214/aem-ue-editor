@@ -1,0 +1,221 @@
+{
+  "sourceUrl": "https://www.moxa.com/en",
+  "capturedAt": "2026-06-16T02:11:22.014Z",
+  "title": "Moxa | Your Trusted Partner in Automation",
+  "description": "Moxa is a leading provider of industrial networking, computing, and automation solutions to help customers enable the connectivity for the Industrial Internet of Things (IIoT).",
+  "files": {
+    "rawHtml": "raw.html",
+    "localHtml": "index.html",
+    "screenshot": "screenshot.png",
+    "components": {
+      "header": "components/header.html",
+      "banner": "components/banner.html",
+      "main": "components/main.html",
+      "footer": "components/footer.html"
+    }
+  },
+  "resourcesFound": {
+    "stylesheets": 3,
+    "scripts": 18,
+    "media": 41
+  },
+  "resourcesDownloaded": 64,
+  "resourceFailures": [
+    {
+      "url": "https://www.moxa.com/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZLv8Yk_TbV_-Jw_UKm_iaNTOcTeVKH2sJ-Hng32aFDrxj0M-tK0osIq5H_R8TcPmzA2&t=638901824248157332",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.moxa.com/b",
+      "error": "HTTP 404"
+    }
+  ],
+  "inlineScripts": [
+    {
+      "file": "data/inline-scripts/script-001.js",
+      "type": "",
+      "attrs": "",
+      "bytes": 348
+    },
+    {
+      "file": "data/inline-scripts/script-002.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 382
+    },
+    {
+      "file": "data/inline-scripts/script-003.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 741
+    },
+    {
+      "file": "data/inline-scripts/script-004.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 1182
+    },
+    {
+      "file": "data/inline-scripts/script-005.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 530
+    },
+    {
+      "file": "data/inline-scripts/script-006.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 262
+    },
+    {
+      "file": "data/inline-scripts/script-007.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 158
+    },
+    {
+      "file": "data/inline-scripts/script-008.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 433
+    },
+    {
+      "file": "data/inline-scripts/script-009.js",
+      "type": "",
+      "attrs": "",
+      "bytes": 1033
+    },
+    {
+      "file": "data/inline-scripts/script-010.js",
+      "type": "",
+      "attrs": "",
+      "bytes": 273
+    },
+    {
+      "file": "data/inline-scripts/script-011.js",
+      "type": "",
+      "attrs": "",
+      "bytes": 299
+    },
+    {
+      "file": "data/inline-scripts/script-012.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 111
+    },
+    {
+      "file": "data/inline-scripts/script-013.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 120
+    },
+    {
+      "file": "data/inline-scripts/script-014.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 648
+    },
+    {
+      "file": "data/inline-scripts/script-015.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 497
+    },
+    {
+      "file": "data/inline-scripts/script-016.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 299
+    },
+    {
+      "file": "data/inline-scripts/script-017.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 299
+    },
+    {
+      "file": "data/inline-scripts/script-018.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 144
+    },
+    {
+      "file": "data/inline-scripts/script-019.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 196
+    },
+    {
+      "file": "data/inline-scripts/script-020.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 587
+    },
+    {
+      "file": "data/inline-scripts/script-021.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 198
+    },
+    {
+      "file": "data/inline-scripts/script-022.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\" id=\"\" charset=\"\"",
+      "bytes": 1420
+    },
+    {
+      "file": "data/inline-scripts/script-023.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\" id=\"\" charset=\"\"",
+      "bytes": 16
+    },
+    {
+      "file": "data/inline-scripts/script-024.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\" id=\"\" charset=\"\"",
+      "bytes": 5417
+    },
+    {
+      "file": "data/inline-scripts/script-025.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\" id=\"\" charset=\"\"",
+      "bytes": 3244
+    },
+    {
+      "file": "data/inline-scripts/script-026.js",
+      "type": "",
+      "attrs": "",
+      "bytes": 8058
+    },
+    {
+      "file": "data/inline-scripts/script-027.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\"",
+      "bytes": 282
+    },
+    {
+      "file": "data/inline-scripts/script-028.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\" id=\"\" charset=\"\"",
+      "bytes": 2571
+    },
+    {
+      "file": "data/inline-scripts/script-029.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\" id=\"\" charset=\"\"",
+      "bytes": 4478
+    },
+    {
+      "file": "data/inline-scripts/script-030.js",
+      "type": "text/javascript",
+      "attrs": "type=\"text/javascript\" id=\"\" charset=\"\"",
+      "bytes": 3791
+    }
+  ],
+  "componentLengths": {
+    "header": 38109,
+    "banner": 1897,
+    "main": 11687,
+    "footer": 10068
+  }
+}
