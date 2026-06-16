@@ -142,6 +142,91 @@
     ]
   },
   {
+    "id": "advantage-cards",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "Our Advantages"
+      },
+      {
+        "component": "number",
+        "name": "itemCount",
+        "label": "Number of Items",
+        "value": 3,
+        "description": "Number of advantage cards to display in the carousel (max: 4)",
+        "validation": {
+          "min": 1,
+          "max": 4
+        }
+      },
+      {
+        "component": "number",
+        "name": "imageAutoplayDuration",
+        "label": "Image Autoplay Duration (seconds)",
+        "value": 5,
+        "validation": {
+          "min": 1,
+          "max": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "advantage-card",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "value": "",
+        "label": "Headline",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "details",
+        "value": "",
+        "label": "Details",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media",
+        "label": "Cover Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt"
+      },
+      {
+        "component": "text",
+        "name": "navigation",
+        "value": "",
+        "label": "Navigation Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Navigation Button LinkTo"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "articleOpenInNewTab",
+        "label": "Select to open in new tab"
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -259,217 +344,35 @@
     ]
   },
   {
-    "id": "quote",
+    "id": "moxa-banner",
     "fields": [
-      {
-        "component": "richtext",
-        "name": "quote",
-        "value": "",
-        "label": "Quote",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "author",
-        "label": "Author",
-        "value": ""
-      },
-      {
-        "component": "select",
-        "name": "classes",
-        "value": "",
-        "label": "Background Color",
-        "description": "The quote background color",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Red",
-            "value": "bg-red"
-          },
-          {
-            "name": "Green",
-            "value": "bg-green"
-          },
-          {
-            "name": "Blue",
-            "value": "bg-blue"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "featured-news-articles",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "title",
-        "label": "Title",
-        "value": "Featured News Articles"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "seeAllButtonText",
-        "label": "See All Articles Button Text",
-        "value": "See all News Articles"
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "seeAllButtonLinkTo",
-        "label": "See All Articles Button LinkTo"
-      },
-      {
-        "component": "boolean",
-        "valueType": "boolean",
-        "name": "openLinkInNewTab",
-        "label": "Open link in new tab"
-      },
-      {
-        "component": "number",
-        "name": "itemCount",
-        "label": "Number of Items",
-        "value": 7,
-        "description": "Number of cards to display in the carousel (max:7)",
-        "validation": {
-          "min": 1,
-          "max": 7
-        }
-      }
-    ]
-  },
-  {
-    "id": "featured-news-article",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "articleTitle",
-        "label": "Title of the Article"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "articleSummary",
-        "label": "Article Summary"
-      },
       {
         "component": "reference",
         "valueType": "string",
-        "name": "media",
-        "label": "Media"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Image Alt"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "postedDate",
-        "label": "Posted Date"
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "articleLinkTo",
-        "label": "Article LinkTo"
-      },
-      {
-        "component": "boolean",
-        "valueType": "boolean",
-        "name": "articleOpenInNewTab",
-        "label": "Select to open in new tab"
-      }
-    ]
-  },
-  {
-    "id": "advantage-cards",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "title",
-        "label": "Title",
-        "value": "Our Advantages"
-      },
-      {
-        "component": "number",
-        "name": "itemCount",
-        "label": "Number of Items",
-        "value": 3,
-        "description": "Number of advantage cards to display in the carousel (default: 3)",
-        "validation": {
-          "min": 1,
-          "max": 4
-        }
-      },
-      {
-        "component": "number",
-        "name": "imageAutoplayDuration",
-        "label": "Image Autoplay Duration (seconds)",
-        "value": 5,
-        "validation": {
-          "min": 1,
-          "max": 30
-        }
-      }
-    ]
-  },
-  {
-    "id": "advantage-card",
-    "fields": [
-      {
-        "component": "text",
-        "name": "title",
-        "value": "",
-        "label": "Headline",
-        "valueType": "string",
-        "required": true
-      },
-      {
-        "component": "text",
-        "name": "details",
-        "value": "",
-        "label": "Details",
-        "valueType": "string"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "media",
-        "label": "Cover Image",
+        "name": "backgroundImage",
+        "label": "Background Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageAlt",
-        "label": "Image Alt"
+        "name": "heading",
+        "label": "Heading",
+        "value": "Robust Security, Effortless Management"
       },
       {
         "component": "text",
-        "name": "navigation",
-        "value": "",
-        "label": "Navigation Button Text",
-        "valueType": "string"
-      },
-      {
-        "component": "aem-content",
         "valueType": "string",
-        "name": "link",
-        "label": "Navigation Button LinkTo"
+        "name": "description",
+        "label": "Description",
+        "value": "Easy and secure protocol conversion for modern OT networks"
       },
       {
-        "component": "boolean",
-        "valueType": "boolean",
-        "name": "articleOpenInNewTab",
-        "label": "Select to open in new tab"
+        "component": "richtext",
+        "valueType": "string",
+        "name": "button",
+        "label": "Button",
+        "value": "<a href=\"https://www.moxa.com/en/spotlight/protocol-gateways/mgate-g2/index\">Learn More</a>"
       }
     ]
   },

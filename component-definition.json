@@ -83,6 +83,37 @@
       "id": "blocks",
       "components": [
         {
+          "title": "Advantage Cards",
+          "id": "advantage-cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Advantage Cards",
+                  "model": "advantage-cards",
+                  "filter": "advantage-cards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Advantage Card",
+          "id": "advantage-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Advantage Card",
+                  "model": "advantage-card"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards",
           "id": "cards",
           "plugins": {
@@ -158,98 +189,57 @@
           }
         },
         {
-          "title": "Quote",
-          "id": "quote",
+          "title": "Moxa Banner",
+          "id": "moxa-banner",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Quote",
-                  "model": "quote",
-                  "quote": "<p>Think, McFly! Think!</p>",
-                  "author": "Yuki"
-                }
-              }
-            }
-          }
-        },
-         {
-          "title": "Featured News Articles",
-          "id": "featured-news-articles",
-          "msmSupport": true,
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block",
-                "template": {
-                  "name": "Featured News Articles",
-                  "filter": "featured-news-articles",
-                  "model": "featured-news-articles"
+                  "name": "Moxa Banner",
+                  "model": "moxa-banner"
                 }
               }
             }
           }
         },
         {
-          "title": "Featured News Article",
-          "id": "featured-news-article",
+          "title": "Moxa Content",
+          "id": "moxa-content",
           "plugins": {
             "xwalk": {
               "page": {
-                "resourceType": "core/franklin/components/block/v1/block/item",
+                "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Featured News Article",
-                  "model": "featured-news-article"
+                  "name": "Moxa Content"
                 }
               }
             }
           }
         },
         {
-          "title": "Advantage Cards",
-          "id": "advantage-cards",
-          "msmSupport": true,
+          "title": "Moxa Footer",
+          "id": "moxa-footer",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Advantage Cards",
-                  "model": "advantage-cards",
-                  "filter": "advantage-cards"
+                  "name": "Moxa Footer"
                 }
               }
             }
           }
         },
         {
-          "title": "Advantage Card",
-          "id": "advantage-card",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block/item",
-                "template": {
-                  "name": "Advantage Card",
-                  "model": "advantage-card"
-                }
-              }
-            }
-          }
-        },
-         {
-          "title": "Help Me Choose",
-          "id": "help-me-choose",
+          "title": "Moxa Header",
+          "id": "moxa-header",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Help Me Choose",
-                  "model": "help-me-choose",
-                  "title": "Select The Game You Play",
-                  "description": "We will recommend a plan that suits you most!"                   
+                  "name": "Moxa Header"
                 }
               }
             }
@@ -258,7 +248,6 @@
         {
           "title": "Our Advantages",
           "id": "our-advantages",
-          "msmSupport": true,
           "plugins": {
             "xwalk": {
               "page": {
@@ -282,37 +271,6 @@
                 "template": {
                   "name": "Our Advantage",
                   "model": "our-advantage"
-                }
-              }
-            }
-          }
-        },
-         {
-          "title": "Hero Banner",
-          "id": "carousel",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block",
-                "template": {
-                  "name": "Carousel",
-                  "filter": "carousel",
-                  "model": "carousel"
-                }
-              }
-            }
-          }
-        },
-        {
-          "title": "Carousel Slide",
-          "id": "carousel-slide",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block/item",
-                "template": {
-                  "name": "Carousel Slide",
-                  "model": "carousel-slide"
                 }
               }
             }

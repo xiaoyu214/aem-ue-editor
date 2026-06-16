@@ -1,0 +1,55 @@
+{
+  "definitions": [
+    {
+      "title": "Moxa Banner",
+      "id": "moxa-banner",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Moxa Banner",
+              "model": "moxa-banner"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "moxa-banner",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "backgroundImage",
+          "label": "Background Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "heading",
+          "label": "Heading",
+          "value": "Robust Security, Effortless Management"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "description",
+          "label": "Description",
+          "value": "Easy and secure protocol conversion for modern OT networks"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "button",
+          "label": "Button",
+          "value": "<a href=\"https://www.moxa.com/en/spotlight/protocol-gateways/mgate-g2/index\">Learn More</a>"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

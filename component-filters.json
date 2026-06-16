@@ -15,13 +15,13 @@
       "hero",
       "cards",
       "columns",
-      "fragment",
-      "quote",
-      "featured-news-articles",
-      "advantage-cards",
-      "help-me-choose",
-      "carousel",
-      "our-advantages"
+      "fragment"
+    ]
+  },
+  {
+    "id": "advantage-cards",
+    "components": [
+      "advantage-card"
     ]
   },
   {
@@ -30,12 +30,6 @@
       "card"
     ]
   },
-  {
-      "id": "carousel",
-      "components": [
-        "carousel-slide"
-      ]
-    },
   {
     "id": "columns",
     "components": [
@@ -51,22 +45,10 @@
       "title"
     ]
   },
-   {
-      "id": "featured-news-articles",
-      "components": [
-        "featured-news-article"
-      ]
-    },
-    {
-    "id": "advantage-cards",
-    "components": [
-      "advantage-card"
-    ]
-  },
   {
-      "id": "our-advantages",
-      "components": [
-        "our-advantage"
-      ]
-    }
+    "id": "our-advantages",
+    "components": [
+      "our-advantage"
+    ]
+  }
 ]
