@@ -1,4 +1,11 @@
-import {
+const getModuleUrl = (url) => {
+  if (!window.location.hostname.endsWith('.adobeaemcloud.com')) return url;
+  const { search } = new URL(import.meta.url);
+  if (!search || /[?&]ref=/.test(url)) return url;
+  return `${url}${url.includes('?') ? '&' : '?'}${search.substring(1)}`;
+};
+
+const {
   loadHeader,
   loadFooter,
   decorateButtons,
@@ -10,7 +17,7 @@ import {
   loadSection,
   loadSections,
   loadCSS,
-} from './aem.js';
+} = await import(getModuleUrl('./aem.js'));
 
 
 /**
@@ -355,7 +362,7 @@ function autolinkModals(doc) {
     const origin = e.target.closest('a');
     if (origin && origin.href && origin.href.includes('/modals/')) {
       e.preventDefault();
-      const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
+      const { openModal } = await import(getModuleUrl(`${window.hlx.codeBasePath}/blocks/modal/modal.js`));
       openModal(origin.href);
     }
   });
@@ -404,8 +411,8 @@ export async function fetchPlaceholders(prefix = 'default') {
  */
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
-  import("./carousel.js").then(() => {
+  window.setTimeout(() => import(getModuleUrl('./delayed.js')), 3000);
+  import(getModuleUrl('./carousel.js')).then(() => {
     // trigger carousel event
     document.dispatchEvent(new Event("eds-carousel-DOMContentLoaded"));
   });

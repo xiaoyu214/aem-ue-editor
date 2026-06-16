@@ -130,21 +130,56 @@ function sampleRUM(checkpoint, data) {
 /**
  * Setup block utils.
  */
+function getAuthorAssetQuery() {
+  if (!window.location.hostname.endsWith('.adobeaemcloud.com')) return '';
+  const ref = new URLSearchParams(window.location.search).get('ref');
+  return ref ? `ref=${encodeURIComponent(ref)}` : '';
+}
+
+function isSameOriginAsset(url) {
+  try {
+    return new URL(url, window.location.href).origin === window.location.origin;
+  } catch (error) {
+    return false;
+  }
+}
+
+function withAssetQuery(url) {
+  const query = window.hlx?.assetQuery;
+  if (!query || !isSameOriginAsset(url) || /[?&]ref=/.test(url)) return url;
+
+  const [assetUrl, hash = ''] = url.split('#');
+  const separator = assetUrl.includes('?') ? '&' : '?';
+  return `${assetUrl}${separator}${query}${hash ? `#${hash}` : ''}`;
+}
+
 function setup() {
   window.hlx = window.hlx || {};
   window.hlx.RUM_MASK_URL = 'full';
   window.hlx.RUM_MANUAL_ENHANCE = true;
   window.hlx.codeBasePath = '';
+  window.hlx.assetQuery = getAuthorAssetQuery();
   window.hlx.lighthouse = new URLSearchParams(window.location.search).get('lighthouse') === 'on';
 
-  const scriptEl = document.querySelector('script[src$="/scripts/scripts.js"]');
+  const scriptEl = [...document.scripts].find((script) => {
+    try {
+      const scriptURL = new URL(script.src, window.location);
+      return scriptURL.pathname.endsWith('/scripts/scripts.js')
+        || scriptURL.pathname.endsWith('/scripts/aem.js');
+    } catch (error) {
+      return false;
+    }
+  });
   if (scriptEl) {
     try {
       const scriptURL = new URL(scriptEl.src, window.location);
+      const scriptPath = scriptURL.pathname.endsWith('/scripts/aem.js')
+        ? '/scripts/aem.js'
+        : '/scripts/scripts.js';
       if (scriptURL.host === window.location.host) {
-        [window.hlx.codeBasePath] = scriptURL.pathname.split('/scripts/scripts.js');
+        [window.hlx.codeBasePath] = scriptURL.pathname.split(scriptPath);
       } else {
-        [window.hlx.codeBasePath] = scriptURL.href.split('/scripts/scripts.js');
+        [window.hlx.codeBasePath] = scriptURL.href.split(scriptPath);
       }
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -236,11 +271,12 @@ function readBlockConfig(block) {
  * @param {string} href URL to the CSS file
  */
 async function loadCSS(href) {
+  const assetHref = withAssetQuery(href);
   return new Promise((resolve, reject) => {
-    if (!document.querySelector(`head > link[href="${href}"]`)) {
+    if (!document.querySelector(`head > link[href="${assetHref}"]`)) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = href;
+      link.href = assetHref;
       link.onload = resolve;
       link.onerror = reject;
       document.head.append(link);
@@ -256,10 +292,11 @@ async function loadCSS(href) {
  * @param {Object} attrs additional optional attributes
  */
 async function loadScript(src, attrs) {
+  const assetSrc = withAssetQuery(src);
   return new Promise((resolve, reject) => {
-    if (!document.querySelector(`head > script[src="${src}"]`)) {
+    if (!document.querySelector(`head > script[src="${assetSrc}"]`)) {
       const script = document.createElement('script');
-      script.src = src;
+      script.src = assetSrc;
       if (attrs) {
         // eslint-disable-next-line no-restricted-syntax, guard-for-in
         for (const attr in attrs) {
@@ -453,7 +490,7 @@ function decorateIcon(span, prefix = '', alt = '') {
     .substring(5);
   const img = document.createElement('img');
   img.dataset.iconName = iconName;
-  img.src = `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
+  img.src = withAssetQuery(`${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`);
   img.alt = alt;
   img.loading = 'lazy';
   img.width = 16;
@@ -678,7 +715,7 @@ async function loadBlock(block) {
         (async () => {
           try {
             const mod = await import(
-              `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.js`
+              withAssetQuery(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.js`)
             );
             if (mod.default) {
               await mod.default(block);
@@ -734,7 +771,7 @@ function decorateBlocks(main) {
  * @returns {Promise}
  */
 async function loadHeader(header) {
-  const { loadHeaderFragment } = await import('./scripts.js');
+  const { loadHeaderFragment } = await import(withAssetQuery('./scripts.js'));
   
   try {
     // Try to load header from fragment first
@@ -768,7 +805,7 @@ async function loadHeader(header) {
  * @returns {Promise}
  */
 async function loadFooter(footer) {
-  const { loadFooterFragment } = await import('./scripts.js');
+  const { loadFooterFragment } = await import(withAssetQuery('./scripts.js'));
   
   try {
     // Try to load footer from fragment first
