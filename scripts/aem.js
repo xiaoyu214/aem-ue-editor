@@ -136,6 +136,26 @@ function getAuthorAssetQuery() {
   return ref ? `ref=${encodeURIComponent(ref)}` : '';
 }
 
+function getAuthorCodeBasePath(scriptSrc = '') {
+  if (!window.location.hostname.endsWith('.adobeaemcloud.com')) return '';
+
+  const paths = [];
+  if (scriptSrc) {
+    try {
+      paths.push(new URL(scriptSrc, window.location.href).pathname);
+    } catch (error) {
+      // ignore invalid script URLs
+    }
+  }
+  paths.push(window.location.pathname);
+
+  const match = paths
+    .map((path) => path.match(/\/content\/([^/.]+)(?:\.resource)?(?:\/|$)/))
+    .find(Boolean);
+
+  return match ? `/content/${match[1]}.resource` : '';
+}
+
 function isSameOriginAsset(url) {
   try {
     return new URL(url, window.location.href).origin === window.location.origin;
@@ -185,6 +205,11 @@ function setup() {
       // eslint-disable-next-line no-console
       console.log(error);
     }
+  }
+
+  const authorCodeBasePath = getAuthorCodeBasePath(scriptEl?.src);
+  if (authorCodeBasePath) {
+    window.hlx.codeBasePath = authorCodeBasePath;
   }
 }
 
