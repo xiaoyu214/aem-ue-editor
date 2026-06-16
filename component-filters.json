@@ -15,7 +15,11 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "moxa-banner",
+      "moxa-content",
+      "moxa-footer",
+      "moxa-header"
     ]
   },
   {
