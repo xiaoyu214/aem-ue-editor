@@ -2,6 +2,14 @@ import {
   transferInstrumentation,
   isAuthorEnvironment,
 } from "../../scripts/utils.js";
+
+const withAuthorTestRef = (url) => {
+  if (!window.location.hostname.endsWith('.adobeaemcloud.com') || /[?&]ref=/.test(url)) return url;
+  // Temporary workaround: author CDN can serve stale static resources without an explicit ref.
+  // Force ref=main for testing until CDN/config behavior is resolved.
+  return `${url}${url.includes('?') ? '&' : '?'}ref=main`;
+};
+
 const itemsStartIndex = 5;
 export default async function decorate(block) {
   const divs = block.children;
@@ -113,7 +121,7 @@ export default async function decorate(block) {
   block.innerHTML = "";
   block.append(mockupContainer);
 
-  await import("../../scripts/carousel.js");
+  await import(withAuthorTestRef('../../scripts/carousel.js'));
 
   if (window.initializeSwiperOnAEMCarousel) {
     window.initializeSwiperOnAEMCarousel(block.querySelector(".cmp-container"));

@@ -3,6 +3,13 @@ let configPromise = null;
 
 const CONFIG_STORAGE_KEY = 'configurations';
 
+const withAuthorTestRef = (url) => {
+  if (!window.location.hostname.endsWith('.adobeaemcloud.com') || /[?&]ref=/.test(url)) return url;
+  // Temporary workaround: author CDN can serve stale static resources without an explicit ref.
+  // Force ref=main for testing until CDN/config behavior is resolved.
+  return `${url}${url.includes('?') ? '&' : '?'}ref=main`;
+};
+
 /**
  * Fetches the configuration JSON file
  * @returns {Promise<Object>} - The configuration object
@@ -21,7 +28,7 @@ const loadConfig = async () => {
 
   // Fetch from server if not in cache
   try {
-    const response = await fetch('/configuration.json');
+    const response = await fetch(withAuthorTestRef('/configuration.json'));
     if (!response.ok) {
       throw new Error(`Failed to load configuration: ${response.status}`);
     }
@@ -61,7 +68,7 @@ export const getConfigValue = async (key) => {
  */
 export const getBlockFieldOrder = async (blockName) => {
   try {
-    const response = await fetch(`/blocks/${blockName}/_${blockName}.json`);
+    const response = await fetch(withAuthorTestRef(`/blocks/${blockName}/_${blockName}.json`));
     if (!response.ok) {
       console.warn(`Could not load block definition for ${blockName}`);
       return [];

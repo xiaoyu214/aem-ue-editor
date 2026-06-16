@@ -1,6 +1,13 @@
 import { isAuthorEnvironment, safeText } from "../../scripts/utils.js";
 import { transferInstrumentation } from "../../scripts/utils.js";
 
+const withAuthorTestRef = (url) => {
+  if (!window.location.hostname.endsWith('.adobeaemcloud.com') || /[?&]ref=/.test(url)) return url;
+  // Temporary workaround: author CDN can serve stale static resources without an explicit ref.
+  // Force ref=main for testing until CDN/config behavior is resolved.
+  return `${url}${url.includes('?') ? '&' : '?'}ref=main`;
+};
+
 const itemsStartIndex = 3;
 export default async function decorate(block) {
   const divs = block.children;
@@ -97,8 +104,8 @@ export default async function decorate(block) {
   block.append(mockupContainer);
 
   // trigger block
-  await import("../../scripts/carousel.js");
-  await import("./uifrontend_advantage-card.js");
+  await import(withAuthorTestRef('../../scripts/carousel.js'));
+  await import(withAuthorTestRef('./uifrontend_advantage-card.js'));
 
   if (window.initializeSwiperOnAEMCarousel) {
     window.initializeSwiperOnAEMCarousel(block.querySelector(".container"));

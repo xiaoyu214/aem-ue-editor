@@ -2,6 +2,13 @@ import { loadCSS } from '../../scripts/aem.js';
 
 const MOXA_ASSETS_PATH = `${window.hlx.codeBasePath}/moxa-assets`;
 
+const withAuthorTestRef = (url) => {
+  if (!window.location.hostname.endsWith('.adobeaemcloud.com') || /[?&]ref=/.test(url)) return url;
+  // Temporary workaround: author CDN can serve stale static resources without an explicit ref.
+  // Force ref=main for testing until CDN/config behavior is resolved.
+  return `${url}${url.includes('?') ? '&' : '?'}ref=main`;
+};
+
 const cssFiles = [
   'moxa-inline.css',
   'style-min-3f918a7a52.css',
@@ -30,7 +37,7 @@ export async function loadMoxaSharedAssets() {
 
 export async function loadMoxaStaticHtml(block, fileName) {
   await loadMoxaSharedAssets();
-  const response = await fetch(`${window.hlx.codeBasePath}/blocks/${fileName}/${fileName}.html`);
+  const response = await fetch(withAuthorTestRef(`${window.hlx.codeBasePath}/blocks/${fileName}/${fileName}.html`));
   if (!response.ok) {
     throw new Error(`Failed to load ${fileName}.html`);
   }

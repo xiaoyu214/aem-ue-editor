@@ -132,8 +132,9 @@ function sampleRUM(checkpoint, data) {
  */
 function getAuthorAssetQuery() {
   if (!window.location.hostname.endsWith('.adobeaemcloud.com')) return '';
-  const ref = new URLSearchParams(window.location.search).get('ref');
-  return ref ? `ref=${encodeURIComponent(ref)}` : '';
+  // Temporary workaround: author CDN can serve stale static resources without an explicit ref.
+  // Force ref=main for testing until CDN/config behavior is resolved.
+  return 'ref=main';
 }
 
 function getAuthorCodeBasePath(scriptSrc = '') {

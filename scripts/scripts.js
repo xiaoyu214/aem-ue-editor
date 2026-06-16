@@ -1,8 +1,9 @@
 const getModuleUrl = (url) => {
   if (!window.location.hostname.endsWith('.adobeaemcloud.com')) return url;
-  const { search } = new URL(import.meta.url);
-  if (!search || /[?&]ref=/.test(url)) return url;
-  return `${url}${url.includes('?') ? '&' : '?'}${search.substring(1)}`;
+  if (/[?&]ref=/.test(url)) return url;
+  // Temporary workaround: author CDN can serve stale static resources without an explicit ref.
+  // Force ref=main for testing until CDN/config behavior is resolved.
+  return `${url}${url.includes('?') ? '&' : '?'}ref=main`;
 };
 
 const {

@@ -1,30 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<script>
-  (() => {
-    const isAuthor = window.location.hostname.endsWith('.adobeaemcloud.com');
-    const ref = isAuthor ? new URLSearchParams(window.location.search).get('ref') : '';
-    const authorRoot = (() => {
-      const match = window.location.pathname.match(/^\/content\/([^/]+)/);
-      return match ? `/content/${match[1]}.resource` : '';
-    })();
-    const toAssetUrl = (url) => {
-      const assetUrl = isAuthor && authorRoot ? `${authorRoot}${url}` : url;
-      return ref ? `${assetUrl}${assetUrl.includes('?') ? '&' : '?'}ref=${encodeURIComponent(ref)}` : assetUrl;
-    };
-
-    ['/styles/clientlib-base.css', '/styles/styles.css', '/styles/site.css'].forEach((href) => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = toAssetUrl(href);
-      document.head.append(link);
-    });
-
-    ['/scripts/aem.js', '/scripts/scripts.js'].forEach((src) => {
-      const script = document.createElement('script');
-      script.type = 'module';
-      script.src = toAssetUrl(src);
-      document.head.append(script);
-    });
-  })();
-</script>
+<script src="/scripts/aem.js?ref=main" type="module"></script>
+<script src="/scripts/scripts.js?ref=main" type="module"></script>
+<link rel="stylesheet" href="/styles/clientlib-base.css?ref=main"/>
+<link rel="stylesheet" href="/styles/styles.css?ref=main"/>
+<link rel="stylesheet" href="/styles/site.css?ref=main"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
